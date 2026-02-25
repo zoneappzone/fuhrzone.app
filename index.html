@@ -1061,7 +1061,7 @@ nav{transition:transform 0.3s ease,background 0.4s,backdrop-filter 0.4s;}
   <ul class="footer-links">
     <li><a href="#apps" data-i18n="nav_apps">Apps</a></li>
     <li><a href="#features" data-i18n="nav_features">Features</a></li>
-    <li><a href="#" data-i18n="footer_privacy">Datenschutz</a></li>
+    <li><a href="#" onclick="document.getElementById('datenschutz-modal').style.display='flex';document.getElementById('ds-title').textContent=(curLang==='de'?'Datenschutzerklärung':'Privacy Policy');document.getElementById('ds-de').style.display=(curLang==='de'?'block':'none');document.getElementById('ds-en').style.display=(curLang==='de'?'none':'block');return false;" data-i18n="footer_privacy">Datenschutz</a></li>
     <li><a href="#" onclick="document.getElementById('impressum-modal').style.display='flex';return false;" data-i18n="footer_imprint">Impressum</a></li>
   </ul>
   <div class="footer-copy" data-i18n="footer_copy">© 2026 fuhrzone.app</div>
@@ -2022,7 +2022,203 @@ setLang('en');
 </script>
 
 
-<div id="impressum-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(12px);align-items:center;justify-content:center;">
+<div id="datenschutz-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(12px);align-items:center;justify-content:center;" onclick="if(event.target===this)this.style.display='none'">
+  <div style="max-width:680px;width:90%;max-height:88vh;overflow-y:auto;background:#111215;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2.5rem;position:relative;">
+    <button onclick="document.getElementById('datenschutz-modal').style.display='none'" style="position:sticky;top:0;float:right;background:none;border:none;color:#5a6070;font-size:1.2rem;cursor:pointer;">✕</button>
+    <h2 id="ds-title" style="font-family:Outfit,sans-serif;font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;color:#e8eaed;margin-bottom:0.5rem;">Privacy Policy</h2>
+
+    <!-- DEUTSCH -->
+    <div id="ds-de" style="display:none;font-size:0.82rem;color:#8a9ab0;line-height:1.9;">
+    <p style="font-size:0.78rem;color:#5a6070;margin-bottom:1.5rem;">Informationen über die Verarbeitung Ihrer Daten gemäß Art. 13 und Art. 14 der Datenschutz-Grundverordnung (DS-GVO)</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.5rem;">Inhalt</p>
+      <ol style="padding-left:1.2rem;margin-bottom:1.5rem;color:#5a6070;">
+        <li>Allgemeine Informationen</li>
+        <li>Kontaktdaten des Verantwortlichen und bei Fragen zum Datenschutz</li>
+        <li>Datenverarbeitung in Zusammenhang mit unseren Online-Auftritten<br>3.1 Auftritte auf sozialen Medien<br>3.2 Verwendung von Zahlungsdienstleistern</li>
+        <li>Datenverarbeitung bei Nutzung unserer Website</li>
+        <li>Datenweitergabe an Dritte und externe Empfänger</li>
+        <li>Verwendung von Daten für Kommunikation und Marketing</li>
+        <li>Verwendung von Impressum-Privatschutz (IP-Management)</li>
+        <li>Speicherdauer der Daten</li>
+        <li>Datensicherheit</li>
+        <li>Ihre Rechte als betroffene Person</li>
+      </ol>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">1. Allgemeine Informationen</p>
+      <p style="margin-bottom:1.5rem;">Nachfolgend möchten wir Sie informieren, wie wir personenbezogene Daten verwenden und speichern. Sofern Sie bestimmte Leistungen abrufen (z. B. uns eine E-Mail senden), können personenbezogene Daten erhoben werden. Wir beachten dabei die geltenden europäischen Bestimmungen zum Datenschutz.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">2. Kontaktdaten des Verantwortlichen und bei Fragen zum Datenschutz</p>
+      <p style="margin-bottom:1.5rem;">
+        Eugen Fuhr<br>
+        c/o IP-Management #8830<br>
+        Ludwig-Erhard-Straße 18<br>
+        20459 Hamburg<br><br>
+        E-Mail: <a href="mailto:kontakt@fuhrzone.app" style="color:#0077B6;">kontakt@fuhrzone.app</a>
+      </p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">3. Datenverarbeitung in Zusammenhang mit unseren Online-Auftritten</p>
+      <p style="color:#e8eaed;font-weight:600;margin-bottom:0.4rem;">3.1 Auftritte auf sozialen Medien</p>
+
+      <p style="color:#e8eaed;font-weight:500;margin-bottom:0.3rem;">Datenverarbeitung bei unserem Auftritt auf Instagram</p>
+      <p style="margin-bottom:1rem;">Wir greifen für die von uns veröffentlichten Informationen auf die Plattform und Dienste der Firma Meta Platforms Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland (nachfolgend "Meta") zurück. Wenn Sie sich für die Nutzung unserer Meta-Seiten entscheiden, tun Sie dies in eigener Verantwortung. Dies gilt insbesondere für die Nutzung der interaktiven Funktionen (z. B. Kommentieren oder Bewerten). Wir haben keinen Einfluss auf Art und Umfang der Daten, die Meta erhebt und verarbeitet. Grundsätzlich wird bei Nutzung unserer Meta-Seiten die Ihrem Endgerät zugeteilte IP-Adresse an Meta übermittelt. Nach Angaben von Meta wird diese IP-Adresse anonymisiert (bei IP-Adressen aus Deutschland) und nach 90 Tagen gelöscht. Meta speichert darüber hinaus Informationen über Ihr Endgerät. Diese Informationen werden verwendet, um uns als Seiten-Betreibern statistische Informationen zur Verfügung zu stellen.</p>
+      <p style="margin-bottom:1rem;">Auch für unsere Seiten stellt uns Meta statistische Daten zur Verfügung. Hierbei handelt es sich um zusammengefasste Daten, durch die wir Aufschluss darüber erlangen können, wie Nutzer mit unserer Seite interagieren und die uns eine optimierte Darstellung unseres Angebots sowie eine effektive Kommunikation mit Nutzern ermöglichen. Rechtsgrundlage der Verarbeitung ist Art. 6 Abs. 1 lit. f DS-GVO, wobei sich unser berechtigtes Interesse aus den oben genannten Zwecken ergibt. Die in diesem Zusammenhang über Sie erhobenen Daten werden von Meta verarbeitet und dabei gegebenenfalls in Länder außerhalb der Europäischen Union übertragen. Informationen zur Übermittlung europäischer Daten in Drittländer durch Meta, einschließlich der Plattform Instagram, finden Sie hier: <a href="https://www.facebook.com/legal/EU_data_transfer_addendum" target="_blank" style="color:#0077B6;">https://www.facebook.com/legal/EU_data_transfer_addendum</a></p>
+      <p style="margin-bottom:1rem;">Weitere Informationen zum Datenschutz bei Meta und insbesondere darüber, wie Sie ggf. der Verarbeitung widersprechen können oder die über Sie vorhandene Informationen verwalten oder löschen können, finden Sie in den Datenschutzrichtlinien von Meta: <a href="https://privacycenter.instagram.com/policy/" target="_blank" style="color:#0077B6;">https://privacycenter.instagram.com/policy/</a></p>
+      <p style="margin-bottom:1rem;">Wenn Sie bei Meta-Diensten angemeldet sind, befindet sich auf Ihrem Endgerät ein Cookie mit Ihrer Kennung. Dadurch kann Meta nachvollziehen, dass Sie unsere Seite besucht haben und wie Sie diese genutzt haben. Dies gilt auch für alle anderen Meta-Seiten. Meta ist es zudem möglich, Ihre Besuche auf diesen Webseiten Ihrem Meta-Profil zuzuordnen. Anhand dieser Daten kann Meta Inhalte oder Werbung auf Sie zugeschnitten anbieten. Wenn Sie dies vermeiden möchten, können Sie sich bei Meta ausloggen beziehungsweise die Funktion „angemeldet bleiben" deaktivieren und die auf Ihrem Gerät vorhandenen Cookies löschen. Auf diese Weise werden Meta-Informationen, über welche Sie unmittelbar identifiziert werden können, gelöscht. Danach können Sie unsere Meta-Seiten nutzen, ohne dass Ihre Meta-Kennung offenbart wird. Wenn Sie interaktive Funktionen der Seite verwenden möchten (z. B. Gefällt mir, Kommentieren und Nachrichten), erscheint ein Meta-Anmeldefenster. Nach Anmeldung kann Meta Sie erneut Ihrem Profil zuordnen.</p>
+      <p style="margin-bottom:1.5rem;">Soweit wir als Anbieter unserer Meta-Seiten personenbezogene Daten ausschließlich selbst verarbeiten, z. B. wenn Sie uns hinsichtlich unserer Produkte kontaktieren oder uns hierzu Ihre Zustimmung geben, erfolgt die Erhebung, Verarbeitung und Nutzung Ihrer Daten zu dem Zweck, Ihre Anfrage zu beantworten oder die von Ihnen angefragte Dienstleistung zu erbringen. Rechtsgrundlagen der Verarbeitung sind Art. 6 Abs. 1 lit. a DS-GVO (Einwilligung), Art. 6 Abs. 1 lit. b DS-GVO und Art. 6 Abs. 1 lit. f DS-GVO. Als Anbieter unserer Meta-Seiten erheben und verarbeiten wir darüber hinaus keine Daten aus Ihrer Nutzung unseres Dienstes.</p>
+
+      <p style="color:#e8eaed;font-weight:500;margin-bottom:0.3rem;">Datenverarbeitung bei unserem Auftritt auf TikTok</p>
+      <p style="margin-bottom:1rem;">Wir nutzen für die von uns veröffentlichten Inhalte die Plattform und Dienste der Firma TikTok Technology Limited, 10 Earlsfort Terrace, Dublin, D02 T380, Irland (nachfolgend "TikTok"). Wenn Sie unseren Auftritt auf TikTok besuchen oder mit unseren Inhalten interagieren, verarbeitet TikTok verschiedene personenbezogene Daten, wie z. B. Ihre IP-Adresse, Interaktionsdaten (Likes, Kommentare, geteilte Inhalte) und Nutzungsdaten (angesehene Videos, Verweildauer). Diese Daten werden genutzt, um uns anonymisierte Statistiken über die Nutzung unserer TikTok-Inhalte zur Verfügung zu stellen, die Reichweite unserer Beiträge zu analysieren und unsere Inhalte zu optimieren. Die Verarbeitung dieser Daten erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO, um unsere Social-Media-Präsenz zu verbessern und unsere Zielgruppen besser zu verstehen.</p>
+      <p style="margin-bottom:1.5rem;">TikTok selbst verarbeitet Ihre Daten gemäß den eigenen Datenschutzrichtlinien, auf die wir keinen Einfluss haben. Weitere Informationen zur Datenverarbeitung durch TikTok finden Sie in der Datenschutzerklärung von TikTok: <a href="https://www.tiktok.com/legal/privacy-policy" target="_blank" style="color:#0077B6;">https://www.tiktok.com/legal/privacy-policy</a></p>
+
+      <p style="color:#e8eaed;font-weight:600;margin-bottom:0.4rem;">3.2 Verwendung von Zahlungsdienstleistern</p>
+      <p style="margin-bottom:1.5rem;">Derzeit setzen wir keine Zahlungsdienstleister ein. Sollte sich dies zukünftig ändern, werden wir Sie selbstverständlich transparent informieren und sicherstellen, dass Ihre personenbezogenen Daten auch hierbei den geltenden Datenschutzbestimmungen entsprechend geschützt werden.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">4. Datenverarbeitung bei Nutzung unserer Website</p>
+      <p style="margin-bottom:0.8rem;">Wenn Sie auf unsere Website zugreifen, übermittelt Ihr Internetbrowser aus technischen Gründen automatisch die nachfolgenden Daten an unseren Webserver:</p>
+      <ul style="padding-left:1.2rem;margin-bottom:1rem;">
+        <li>IP-Adresse</li>
+        <li>Datum und Uhrzeit der Serveranfrage</li>
+        <li>URL der abgerufenen Datei</li>
+        <li>Übertragene Datenmenge</li>
+        <li>Betriebssystem</li>
+        <li>Informationen über den Browsertyp und die verwendete Version</li>
+        <li>Bezeichnung des Internet-Providers</li>
+        <li>Website, von der aus diese Website aufgerufen wurde</li>
+        <li>Besuchte Seite auf unserer Website</li>
+      </ul>
+      <p style="margin-bottom:1rem;">Die Erhebung, Verarbeitung und Nutzung der oben genannten Daten erfolgt zu dem Zweck, die Nutzung und Auslieferung unserer Website zu ermöglichen. Weitere Zwecke sind die Sicherheit unserer IT-Systeme sowie die technische Administration. Rechtsgrundlage der Verarbeitung ist Art. 6 Abs. 1 lit. f DS-GVO, wobei sich unser berechtigtes Interesse aus den oben genannten Zwecken ergibt.</p>
+      <p style="margin-bottom:1rem;">Wenn Sie sich zur Nutzung unseres Kontaktformulars entscheiden, werden Ihre Angaben ausschließlich zu Zwecken der Abwicklung Ihrer Anfrage und zur Ausführung der von Ihnen möglicherweise hierüber angeforderten Leistungen verwendet. Weitere bzw. sonstige personenbezogene Daten erheben und verarbeiten wir nur dann, wenn Sie bestimmte Dienstleistungen in Anspruch nehmen und wir hierfür Ihre Daten benötigen oder wenn Sie uns Ihre ausdrückliche Zustimmung erteilt haben. Rechtsgrundlagen der Verarbeitung sind Art. 6 Abs. 1 lit. b DS-GVO und Art. 6 Abs. 1 lit. f DS-GVO.</p>
+      <p style="color:#e8eaed;font-weight:500;margin-bottom:0.3rem;">Essenzielle Cookies und Dienste für den Webseitenbetrieb</p>
+      <p style="margin-bottom:1.5rem;">Essenzielle Cookies sind erforderlich, um grundlegende Funktionen unserer Website sicherzustellen und ihren Betrieb zu ermöglichen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses an der grundlegenden Bereitstellung unserer Website. Rechtsgrundlage ist Art. 6 Abs. 1 f DS-GVO. Ohne diese Cookies ist die Funktion unserer Website nicht gegeben. Diese Cookies können nur in den Browsereinstellungen deaktiviert werden.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">5. Datenweitergabe an Dritte und externe Empfänger</p>
+      <p style="margin-bottom:1rem;">In bestimmten Fällen sind wir gesetzlich verpflichtet, Daten an eine anfragende staatliche Stelle zu übermitteln, z.B. im Rahmen nationaler Rechtsvorschriften. Rechtsgrundlage der Verarbeitung ist Art. 6 Abs. 1 lit. c DS-GVO. Bei Einbindung von Dienstleistern im Rahmen einer Datenverarbeitung im Auftrag halten wir die datenschutzrechtlichen Bestimmungen gem. Art. 28 DS-GVO und Art. 44 ff. DS-GVO ein.</p>
+      <p style="margin-bottom:1rem;">Darüber hinaus geben wir nur dann Daten an Dritte weiter, wenn Sie hierzu ausdrücklich eingewilligt haben, die Übermittlung zur Durchführung einer von Ihnen angeforderten Leistung erkennbar notwendig (z. B. Einbindung eines Versanddienstleisters) oder die Übermittlung gesetzlich vorgesehen ist.</p>
+      <p style="margin-bottom:1.5rem;">Wir unternehmen im Falle einer Übermittlung von personenbezogenen Daten in Länder außerhalb der EU bzw. des EWR alle notwendigen Schritte, um sicherzustellen, dass angemessene Maßnahmen zum Schutz Ihrer personenbezogenen Daten gemäß den Datenschutzbestimmungen ergriffen wurden, z.B. Anwendung der von der EU-Kommission genehmigten Standardvertragsklauseln.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">6. Verwendung von Daten für Kommunikation und Marketing</p>
+      <p style="color:#e8eaed;font-weight:500;margin-bottom:0.3rem;">Umfragen und Werbung für ähnliche Produkte</p>
+      <p style="margin-bottom:1.5rem;">Um sicherzustellen, dass unser Service Ihren Wünschen entspricht, können wir Ihre E-Mail-Adresse, welche Sie im Rahmen einer Anfrage, Bestellung oder in Zusammenhang mit der Nutzung unserer kostenlosen Angebote übermitteln, für Umfragen zur Kundenzufriedenheit verwenden. Als Kunde können wir Ihnen – auch ohne vorherige Einwilligung – Werbung per E-Mail für ähnliche Produkte zusenden, wie für in der Vergangenheit bei uns in Auftrag gegebene bzw. in Anspruch genommene Dienstleistungen. Rechtsgrundlage der Verarbeitung ist unser berechtigtes Interesse an einer Verbesserung unserer Leistungen (Art. 6 Abs. 1 lit. f DS-GVO). Sie können der zukünftigen Nutzung durch eine Nachricht an die oben genannten Kontaktdaten widersprechen oder im Falle eines Newsletters den darin befindlichen Abmeldelink verwenden.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">7. Verwendung von Impressum-Privatschutz (IP-Management)</p>
+      <p style="margin-bottom:1.5rem;">Wir verwenden für die Verwaltung der an uns gesendeten Post die Dienstleistungen der IMPRESSUM-PRIVATSCHUTZ GmbH, Ludwig-Erhard-Str. 18, 20459 Hamburg. Dieser Dienstleister bietet eine sichere und zuverlässige Postanschrift für unser Projekt (z.B. Impressum, Datenschutzerklärung, Widerrufsbelehrung und ggf. weitere Bereiche). Dies stellt auch unser berechtigtes Interesse im Sinne des Art. 6 Abs. 1 lit. f DS-GVO dar. Wir haben mit Impressum-Privatschutz einen Vertrag zur Auftragsverarbeitung abgeschlossen und setzen die strengen Vorgaben der deutschen Datenschutzbehörden bei der Nutzung dieser Dienstleistung vollständig um. Weitere Informationen über Datenschutz bei Impressum-Privatschutz GmbH finden Sie hier: <a href="https://impressum-privatschutz.de/datenschutzerklaerung/" target="_blank" style="color:#0077B6;">https://impressum-privatschutz.de/datenschutzerklaerung/</a></p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">8. Speicherdauer der Daten</p>
+      <p style="margin-bottom:1.5rem;">Wir speichern personenbezogene Daten solange, bis Sie Ihre Einwilligung widerrufen oder die Daten zur Erfüllung unserer Geschäftsinteressen bzw. zur Erbringung der von Ihnen angeforderten Dienstleistung nicht mehr erforderlich sind oder dies gesetzlich notwendig ist.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">9. Datensicherheit</p>
+      <p style="margin-bottom:1rem;">Wir legen großen Wert auf den Schutz Ihrer personenbezogenen Daten und haben deshalb technische und organisatorische Maßnahmen (TOMs) implementiert, um ein angemessenes Schutzniveau gemäß den gesetzlichen Anforderungen, insbesondere der Datenschutz-Grundverordnung (DSGVO), zu gewährleisten. Diese Maßnahmen dienen dazu, die Vertraulichkeit, Integrität und Verfügbarkeit der von mir verarbeiteten Daten sicherzustellen und diese vor unbefugtem Zugriff, Verlust, Zerstörung oder Manipulation zu schützen.</p>
+      <p style="margin-bottom:1.5rem;">Die technischen und organisatorischen Maßnahmen werden, soweit erforderlich, an den Stand der Technik angepasst, um den Schutz Ihrer Daten weiterhin zu gewährleisten.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">10. Ihre Rechte als betroffene Person</p>
+      <p style="margin-bottom:1rem;">Sie haben jederzeit das Recht, unentgeltlich Auskunft über den Zweck, den Umfang, die Herkunft und die Empfänger der von Ihnen gespeicherten personenbezogenen Daten zu verlangen (Art. 15 DS-GVO). Zusätzlich haben Sie das Recht, die Berichtigung unrichtiger oder unvollständiger Daten zu verlangen (Art. 16 DS-GVO).</p>
+      <p style="margin-bottom:1rem;">Gemäß den datenschutzrechtlichen Bestimmungen steht Ihnen weiterhin das Recht auf Löschung Ihrer personenbezogenen Daten zu, sofern die Voraussetzungen des Art. 17 DS-GVO vorliegen (Recht auf Vergessenwerden), sowie das Recht auf Einschränkung der Verarbeitung Ihrer personenbezogenen Daten gemäß Art. 18 DS-GVO. Zudem haben Sie das Recht, der Verarbeitung Ihrer personenbezogenen Daten jederzeit zu widersprechen (Art. 21 DS-GVO), wenn diese auf Grundlage von Art. 6 Abs. 1 lit. e oder f DS-GVO erfolgt. Dies gilt insbesondere für die Verarbeitung Ihrer Daten zu Zwecken der Direktwerbung.</p>
+      <p style="margin-bottom:1rem;">Ferner steht Ihnen das Recht auf Datenübertragbarkeit zu, d.h. Sie können die personenbezogenen Daten, die Sie uns bereitgestellt haben, in einem strukturierten, gängigen und maschinenlesbaren Format erhalten oder die Übermittlung dieser Daten an einen anderen Verantwortlichen verlangen, sofern die Voraussetzungen des Art. 20 DS-GVO vorliegen.</p>
+      <p style="margin-bottom:1rem;">Sollten Sie der Auffassung sein, dass die Verarbeitung Ihrer personenbezogenen Daten gegen datenschutzrechtliche Bestimmungen verstößt oder Ihre Rechte auf sonstige Weise verletzt worden sind, haben Sie das Recht, Beschwerde bei der zuständigen Aufsichtsbehörde gemäß Art. 77 DS-GVO einzureichen.</p>
+      <p style="margin-bottom:1rem;">Darüber hinaus haben Sie das Recht, Ihre erteilte Einwilligung zur Verarbeitung Ihrer personenbezogenen Daten jederzeit mit Wirkung für die Zukunft zu widerrufen, beispielsweise durch eine formlose Mitteilung per E-Mail oder schriftlich an die oben genannten Kontaktdaten (Art. 7 Abs. 3 DS-GVO). Die Rechtmäßigkeit der bis zum Zeitpunkt des Widerrufs erfolgten Verarbeitung auf Grundlage Ihrer Einwilligung bleibt hiervon unberührt.</p>
+      <p style="margin-bottom:0.5rem;">Für die Ausübung Ihrer Rechte wenden Sie sich bitte an: <a href="mailto:kontakt@fuhrzone.app" style="color:#0077B6;">kontakt@fuhrzone.app</a></p>
+      <p style="margin-top:1.5rem;color:#5a6070;font-size:0.75rem;">Quelle: <a href="https://impressum-privatschutz.de/" target="_blank" style="color:#0077B6;">Impressum-Privatschutz</a></p>
+    </div><!-- end ds-de -->
+
+    <!-- ENGLISH -->
+    <div id="ds-en" style="font-size:0.82rem;color:#8a9ab0;line-height:1.9;">
+    <p style="font-size:0.78rem;color:#5a6070;margin-bottom:1.5rem;">Information on the processing of your data pursuant to Art. 13 and Art. 14 of the General Data Protection Regulation (GDPR)</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.5rem;">Contents</p>
+      <ol style="padding-left:1.2rem;margin-bottom:1.5rem;color:#5a6070;">
+        <li>General Information</li>
+        <li>Contact Details of the Controller and Data Protection Inquiries</li>
+        <li>Data Processing in Connection with Our Online Presence<br>3.1 Social Media Profiles<br>3.2 Use of Payment Service Providers</li>
+        <li>Data Processing When Using Our Website</li>
+        <li>Disclosure of Data to Third Parties and External Recipients</li>
+        <li>Use of Data for Communication and Marketing</li>
+        <li>Use of Impressum-Privatschutz (IP Management)</li>
+        <li>Retention Period</li>
+        <li>Data Security</li>
+        <li>Your Rights as a Data Subject</li>
+      </ol>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">1. General Information</p>
+      <p style="margin-bottom:1.5rem;">We would like to inform you about how we use and store personal data. If you use certain services (e.g. sending us an email), personal data may be collected. We comply with applicable European data protection regulations.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">2. Contact Details of the Controller and Data Protection Inquiries</p>
+      <p style="margin-bottom:1.5rem;">
+        Eugen Fuhr<br>
+        c/o IP-Management #8830<br>
+        Ludwig-Erhard-Straße 18<br>
+        20459 Hamburg, Germany<br><br>
+        Email: <a href="mailto:kontakt@fuhrzone.app" style="color:#0077B6;">kontakt@fuhrzone.app</a>
+      </p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">3. Data Processing in Connection with Our Online Presence</p>
+      <p style="color:#e8eaed;font-weight:600;margin-bottom:0.4rem;">3.1 Social Media Profiles</p>
+
+      <p style="color:#e8eaed;font-weight:500;margin-bottom:0.3rem;">Data Processing on Our Instagram Profile</p>
+      <p style="margin-bottom:1rem;">We use the platform and services of Meta Platforms Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Ireland (hereinafter "Meta"). If you choose to use our Meta pages, you do so at your own responsibility. This applies in particular to the use of interactive features (e.g. commenting or rating). We have no influence on the type and scope of data that Meta collects and processes. In general, when using our Meta pages, the IP address assigned to your device is transmitted to Meta. According to Meta, this IP address is anonymised (for IP addresses from Germany) and deleted after 90 days. Meta also stores information about your device. This information is used to provide us as page operators with statistical information.</p>
+      <p style="margin-bottom:1rem;">Meta also provides us with statistical data for our pages. This is aggregated data that allows us to understand how users interact with our page and enables us to optimise the presentation of our offering and communicate effectively with users. The legal basis for processing is Art. 6(1)(f) GDPR, whereby our legitimate interest arises from the purposes mentioned above. The data collected about you in this context is processed by Meta and may be transferred to countries outside the European Union. Information on the transfer of European data to third countries by Meta, including the Instagram platform, can be found here: <a href="https://www.facebook.com/legal/EU_data_transfer_addendum" target="_blank" style="color:#0077B6;">https://www.facebook.com/legal/EU_data_transfer_addendum</a></p>
+      <p style="margin-bottom:1rem;">Further information on data protection at Meta and in particular on how you can object to processing or manage or delete information held about you can be found in Meta's privacy policy: <a href="https://privacycenter.instagram.com/policy/" target="_blank" style="color:#0077B6;">https://privacycenter.instagram.com/policy/</a></p>
+      <p style="margin-bottom:1rem;">If you are logged into Meta services, a cookie containing your identifier is stored on your device. This allows Meta to recognise that you have visited our page and how you have used it. This also applies to all other Meta pages. Meta can also associate your visits to these websites with your Meta profile. Based on this data, Meta can offer you content or advertising tailored to you. If you wish to avoid this, you can log out of Meta or deactivate the "stay logged in" function and delete the cookies on your device. This will delete Meta information by which you can be directly identified. You can then use our Meta pages without revealing your Meta identifier. If you wish to use interactive features of the page (e.g. Like, Comment and Messages), a Meta login window will appear. After logging in, Meta can assign you to your profile again.</p>
+      <p style="margin-bottom:1.5rem;">To the extent that we as operators of our Meta pages process personal data exclusively ourselves, e.g. when you contact us regarding our products or give us your consent to do so, the collection, processing and use of your data is carried out for the purpose of responding to your enquiry or providing the service you have requested. The legal bases for processing are Art. 6(1)(a) GDPR (consent), Art. 6(1)(b) GDPR and Art. 6(1)(f) GDPR. As operators of our Meta pages, we do not collect or process any further data from your use of our service.</p>
+
+      <p style="color:#e8eaed;font-weight:500;margin-bottom:0.3rem;">Data Processing on Our TikTok Profile</p>
+      <p style="margin-bottom:1rem;">We use the platform and services of TikTok Technology Limited, 10 Earlsfort Terrace, Dublin, D02 T380, Ireland (hereinafter "TikTok"). When you visit our TikTok profile or interact with our content, TikTok processes various personal data, such as your IP address, interaction data (likes, comments, shared content) and usage data (videos watched, time spent). This data is used to provide us with anonymised statistics on the use of our TikTok content, to analyse the reach of our posts and to optimise our content. The processing of this data is based on our legitimate interest pursuant to Art. 6(1)(f) GDPR in order to improve our social media presence and better understand our target audiences.</p>
+      <p style="margin-bottom:1.5rem;">TikTok itself processes your data in accordance with its own privacy policies, over which we have no influence. Further information on data processing by TikTok can be found in TikTok's privacy policy: <a href="https://www.tiktok.com/legal/privacy-policy" target="_blank" style="color:#0077B6;">https://www.tiktok.com/legal/privacy-policy</a></p>
+
+      <p style="color:#e8eaed;font-weight:600;margin-bottom:0.4rem;">3.2 Use of Payment Service Providers</p>
+      <p style="margin-bottom:1.5rem;">We do not currently use any payment service providers. Should this change in the future, we will of course inform you transparently and ensure that your personal data is protected in accordance with applicable data protection regulations.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">4. Data Processing When Using Our Website</p>
+      <p style="margin-bottom:0.8rem;">When you access our website, your internet browser automatically transmits the following data to our web server for technical reasons:</p>
+      <ul style="padding-left:1.2rem;margin-bottom:1rem;">
+        <li>IP address</li>
+        <li>Date and time of the server request</li>
+        <li>URL of the retrieved file</li>
+        <li>Amount of data transmitted</li>
+        <li>Operating system</li>
+        <li>Information about the browser type and version used</li>
+        <li>Name of the internet provider</li>
+        <li>Website from which this website was accessed</li>
+        <li>Page visited on our website</li>
+      </ul>
+      <p style="margin-bottom:1rem;">The collection, processing and use of the above data is carried out for the purpose of enabling the use and delivery of our website. Further purposes include the security of our IT systems and technical administration. The legal basis for processing is Art. 6(1)(f) GDPR, whereby our legitimate interest arises from the purposes mentioned above.</p>
+      <p style="margin-bottom:1rem;">If you choose to use our contact form, your details will be used exclusively for the purpose of processing your enquiry and carrying out any services you may have requested through it. We only collect and process further personal data if you use specific services and we require your data for this purpose, or if you have given us your express consent. For example by filling out a corresponding form, sending us an email, commissioning services or directing enquiries to us. The legal bases for processing are Art. 6(1)(b) GDPR and Art. 6(1)(f) GDPR.</p>
+      <p style="color:#e8eaed;font-weight:500;margin-bottom:0.3rem;">Essential Cookies and Services for Website Operation</p>
+      <p style="margin-bottom:1.5rem;">Essential cookies are required to ensure the basic functions of our website and to enable its operation. Processing is based on our legitimate interest in the basic provision of our website. The legal basis is Art. 6(1)(f) GDPR. Without these cookies, our website cannot function. These cookies can only be deactivated in the browser settings.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">5. Disclosure of Data to Third Parties and External Recipients</p>
+      <p style="margin-bottom:1rem;">In certain cases, we are legally obliged to transmit data to a requesting government authority, e.g. under national legislation. The legal basis for processing is Art. 6(1)(c) GDPR. When engaging service providers in the context of data processing on our behalf, we comply with the data protection requirements pursuant to Art. 28 GDPR and Art. 44 et seq. GDPR.</p>
+      <p style="margin-bottom:1rem;">Beyond this, we only pass on data to third parties if you have expressly consented to this, if the transfer is clearly necessary for the performance of a service you have requested (e.g. involvement of a shipping service provider), or if the transfer is required by law.</p>
+      <p style="margin-bottom:1.5rem;">In the event of a transfer of personal data to countries outside the EU or EEA, we take all necessary steps to ensure that appropriate measures have been taken to protect your personal data in accordance with data protection regulations, e.g. by applying the standard contractual clauses approved by the EU Commission.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">6. Use of Data for Communication and Marketing</p>
+      <p style="color:#e8eaed;font-weight:500;margin-bottom:0.3rem;">Surveys and Advertising for Similar Products</p>
+      <p style="margin-bottom:1.5rem;">To ensure that our service meets your needs, we may use your email address, which you provide in connection with an enquiry, order or use of our free services, for customer satisfaction surveys. As a customer, we may send you advertising by email for similar products — even without prior consent — such as for services previously commissioned or used with us. The legal basis for processing is our legitimate interest in improving our services (Art. 6(1)(f) GDPR). You can object to future use by sending a message to the contact details above, or by using the unsubscribe link in any newsletter.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">7. Use of Impressum-Privatschutz (IP Management)</p>
+      <p style="margin-bottom:1.5rem;">We use the services of IMPRESSUM-PRIVATSCHUTZ GmbH, Ludwig-Erhard-Str. 18, 20459 Hamburg for the management of post sent to us. This service provider offers a secure and reliable postal address for our project (e.g. imprint, privacy policy, cancellation policy and other areas as applicable). This also represents our legitimate interest within the meaning of Art. 6(1)(f) GDPR. We have concluded a data processing agreement with Impressum-Privatschutz and fully implement the strict requirements of the German data protection authorities when using this service. Further information on data protection at Impressum-Privatschutz GmbH can be found here: <a href="https://impressum-privatschutz.de/datenschutzerklaerung/" target="_blank" style="color:#0077B6;">https://impressum-privatschutz.de/datenschutzerklaerung/</a></p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">8. Retention Period</p>
+      <p style="margin-bottom:1.5rem;">We store personal data for as long as you have not withdrawn your consent, or until the data is no longer required to fulfil our business interests or to provide the service you have requested, or as required by law.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">9. Data Security</p>
+      <p style="margin-bottom:1rem;">We attach great importance to the protection of your personal data and have therefore implemented technical and organisational measures (TOMs) to ensure an appropriate level of protection in accordance with legal requirements, in particular the General Data Protection Regulation (GDPR). These measures are designed to ensure the confidentiality, integrity and availability of the data we process and to protect it against unauthorised access, loss, destruction or manipulation.</p>
+      <p style="margin-bottom:1.5rem;">The technical and organisational measures are updated to the state of the art as required, in order to continue ensuring the protection of your data.</p>
+
+      <p style="color:#0077B6;font-weight:600;margin-bottom:0.4rem;">10. Your Rights as a Data Subject</p>
+      <p style="margin-bottom:1rem;">You have the right at any time to obtain free information about the purpose, scope, origin and recipients of your stored personal data (Art. 15 GDPR). You also have the right to request the rectification of inaccurate or incomplete data (Art. 16 GDPR).</p>
+      <p style="margin-bottom:1rem;">Under data protection law, you also have the right to erasure of your personal data where the conditions of Art. 17 GDPR are met (right to be forgotten), as well as the right to restriction of processing of your personal data pursuant to Art. 18 GDPR. You also have the right to object at any time to the processing of your personal data (Art. 21 GDPR) where such processing is based on Art. 6(1)(e) or (f) GDPR. This applies in particular to the processing of your data for direct marketing purposes.</p>
+      <p style="margin-bottom:1rem;">You also have the right to data portability, meaning you can receive the personal data you have provided to us in a structured, commonly used and machine-readable format, or request that this data be transferred to another controller, provided the conditions of Art. 20 GDPR are met.</p>
+      <p style="margin-bottom:1rem;">If you believe that the processing of your personal data violates data protection regulations or that your rights have been infringed in any other way, you have the right to lodge a complaint with the competent supervisory authority pursuant to Art. 77 GDPR.</p>
+      <p style="margin-bottom:1rem;">Furthermore, you have the right to withdraw your consent to the processing of your personal data at any time with effect for the future, for example by sending an informal message by email or in writing to the contact details above (Art. 7(3) GDPR). The lawfulness of processing carried out on the basis of your consent prior to the withdrawal remains unaffected.</p>
+      <p style="margin-bottom:0.5rem;">To exercise your rights, please contact: <a href="mailto:kontakt@fuhrzone.app" style="color:#0077B6;">kontakt@fuhrzone.app</a></p>
+      <p style="margin-top:1.5rem;color:#5a6070;font-size:0.75rem;">Source: <a href="https://impressum-privatschutz.de/" target="_blank" style="color:#0077B6;">Impressum-Privatschutz</a></p>
+    </div><!-- end ds-en -->
+
+  </div>
+</div>
+
+<div id="impressum-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(12px);align-items:center;justify-content:center;" onclick="if(event.target===this)this.style.display='none'">
   <div style="max-width:500px;width:90%;background:#111215;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2.5rem;position:relative;">
     <button onclick="document.getElementById('impressum-modal').style.display='none'" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#5a6070;font-size:1.2rem;cursor:pointer;">✕</button>
     <h2 style="font-family:Outfit,sans-serif;font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;color:#e8eaed;margin-bottom:1.5rem;">Impressum</h2>
@@ -2033,9 +2229,4 @@ setLang('en');
       Ludwig-Erhard-Straße 18<br>
       20459 Hamburg<br><br>
       E-Mail: <a href="mailto:kontakt@fuhrzone.app" style="color:#0077B6;">kontakt@fuhrzone.app</a>
-    </p>
-    <p style="font-size:0.7rem;color:#5a6070;margin-top:1.5rem;">Quelle: Impressum-Privatschutz</p>
-  </div>
-</div>
-</body>
-</html>
+    
