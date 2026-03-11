@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutzerklärung – Smart Shopping List | fuhrzone.app</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:#0c0d0f;
+  color:#e8eaed;
+  font-family:'Outfit',sans-serif;
+  font-weight:300;
+  font-size:0.95rem;
+  line-height:1.8;
+}
+.container{
+  max-width:720px;
+  margin:0 auto;
+  padding:4rem 2rem;
+}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:3rem;
+}
+.logo{
+  font-size:1rem;
+  font-weight:600;
+  letter-spacing:0.1em;
+  color:#e8eaed;
+  text-decoration:none;
+}
+.logo span{color:#0077B6;}
+.lang-toggle{display:flex;gap:0.5rem;}
+.lang-btn{
+  background:none;
+  border:1px solid rgba(255,255,255,0.15);
+  color:#5a6070;
+  font-family:'Outfit',sans-serif;
+  font-size:0.78rem;
+  font-weight:500;
+  letter-spacing:0.08em;
+  padding:0.3rem 0.8rem;
+  border-radius:50px;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+.lang-btn.active{border-color:#0077B6;color:#0077B6;}
+.lang-btn:hover{color:#e8eaed;border-color:rgba(255,255,255,0.4);}
+h1{
+  font-size:1rem;
+  font-weight:400;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:#e8eaed;
+  margin-bottom:0.3rem;
+}
+.subtitle{color:#5a6070;font-size:0.82rem;margin-bottom:3rem;}
+.toc{
+  background:#111215;
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:12px;
+  padding:1.5rem 2rem;
+  margin-bottom:2.5rem;
+}
+.toc p{color:#5a6070;font-size:0.82rem;margin-bottom:0.8rem;letter-spacing:0.05em;text-transform:uppercase;}
+.toc ol{padding-left:1.2rem;color:#adb5bd;font-size:0.88rem;line-height:2;}
+h2{
+  color:#0077B6;
+  font-size:0.88rem;
+  font-weight:600;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  margin-top:2.5rem;
+  margin-bottom:0.8rem;
+}
+h3{color:#e8eaed;font-size:0.88rem;font-weight:500;margin-top:1.5rem;margin-bottom:0.5rem;}
+p{color:#adb5bd;margin-bottom:1rem;}
+a{color:#0077B6;text-decoration:none;}
+a:hover{text-decoration:underline;}
+.lang-content{display:none;}
+.lang-content.active{display:block;}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="topbar">
+    <a href="https://fuhrzone.app" class="logo">fuhr<span>zone</span>.app</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('de',this)">DE</button>
+      <button class="lang-btn" onclick="setLang('en',this)">EN</button>
+    </div>
+  </div>
+
+  <!-- DEUTSCH -->
+  <div class="lang-content active" id="content-de">
+    <h1>Datenschutzerklärung</h1>
+    <p class="subtitle">Informationen über die Verarbeitung Ihrer Daten gemäß Art. 13 und Art. 14 der Datenschutz-Grundverordnung (DS-GVO) – Smart Shopping List (Android App)</p>
+
+    <div class="toc">
+      <p>Inhalt</p>
+      <ol>
+        <li>Allgemeine Informationen</li>
+        <li>Kontaktdaten des Verantwortlichen</li>
+        <li>Datenverarbeitung in der App<br>
+          &nbsp;&nbsp;&nbsp;3.1 Lokale Datenspeicherung<br>
+          &nbsp;&nbsp;&nbsp;3.2 Sicherungsdatei (Backup)<br>
+          &nbsp;&nbsp;&nbsp;3.3 Teilen von Listen und Rezepten<br>
+          &nbsp;&nbsp;&nbsp;3.4 Werbung (Google AdMob)<br>
+          &nbsp;&nbsp;&nbsp;3.5 In-App-Kauf (Google Play Billing)</li>
+        <li>Datenweitergabe an Dritte und externe Empfänger</li>
+        <li>Verwendung von Impressum-Privatschutz (IP-Management)</li>
+        <li>Speicherdauer der Daten</li>
+        <li>Datensicherheit</li>
+        <li>Ihre Rechte als betroffene Person</li>
+      </ol>
+    </div>
+
+    <h2>1. Allgemeine Informationen</h2>
+    <p>Nachfolgend möchten wir Sie informieren, wie wir im Rahmen der Nutzung der Android-App <strong>Smart Shopping List</strong> personenbezogene Daten verarbeiten. Wir beachten dabei die geltenden europäischen Bestimmungen zum Datenschutz, insbesondere die Datenschutz-Grundverordnung (DS-GVO).</p>
+    <p>Die App erfordert keine Registrierung und kann vollständig offline genutzt werden. Es werden keine Nutzerdaten an unsere eigenen Server übertragen. Der Schutz Ihrer Privatsphäre hat für uns höchste Priorität. Diese Datenschutzerklärung gilt ausschließlich für die Android-App Smart Shopping List und nicht für Webseiten oder andere Dienste Dritter, die über die App erreichbar sein können.</p>
+
+    <h2>2. Kontaktdaten des Verantwortlichen</h2>
+    <p>Verantwortlicher im Sinne der DS-GVO für diese Datenschutzerklärung ist:</p>
+    <p>Eugen Fuhr<br>
+    c/o IP-Management #8830<br>
+    Ludwig-Erhard-Straße 18<br>
+    20459 Hamburg<br><br>
+    E-Mail: <a href="/cdn-cgi/l/email-protection#c6ada9a8b2a7adb286a0b3aeb4bca9a8a3e8a7b6b6"><span class="__cf_email__" data-cfemail="cea5a1a0baafa5ba8ea8bba6bcb4a1a0abe0afbebe">[email&#160;protected]</span></a></p>
+    <p>Bei Fragen zum Datenschutz oder zur Ausübung Ihrer Rechte können Sie uns jederzeit per E-Mail kontaktieren.</p>
+
+    <h2>3. Datenverarbeitung in der App</h2>
+
+    <h3>3.1 Lokale Datenspeicherung</h3>
+    <p>Alle von Ihnen in der App erfassten Daten – darunter Einkaufslisten, einzelne Artikel, Mengenangaben, Preise, Rezepte, Kategorien sowie persönliche Einstellungen wie Sprache, Währung und Farbthema – werden ausschließlich lokal auf Ihrem Gerät gespeichert. Es findet zu keinem Zeitpunkt eine Übertragung dieser Daten an externe Server oder an den Verantwortlichen statt.</p>
+    <p>Der Verantwortliche hat keinerlei Zugriff auf Ihre in der App gespeicherten Inhalte. Sämtliche Daten verbleiben vollständig unter Ihrer Kontrolle. Bei einer Deinstallation der App werden alle lokal gespeicherten Daten unwiderruflich gelöscht, sofern keine Sicherungsdatei erstellt wurde.</p>
+    <p>Rechtsgrundlage der Verarbeitung ist Art. 6 Abs. 1 lit. b DS-GVO (Verarbeitung zur Vertragserfüllung bzw. zur Bereitstellung der App-Funktionen).</p>
+
+    <h3>3.2 Sicherungsdatei (Backup)</h3>
+    <p>Die App bietet die Möglichkeit, sämtliche gespeicherten Daten als lokale Sicherungsdatei zu exportieren und an einem Ort Ihrer Wahl auf Ihrem Gerät zu speichern. Dieser Vorgang erfolgt ausschließlich lokal auf Ihrem Gerät. Es werden keine Daten automatisch an Dritte übertragen.</p>
+    <p>Die Entscheidung darüber, wo die Sicherungsdatei gespeichert und ob sie weitergegeben wird, liegt vollständig bei Ihnen. Wir empfehlen, Sicherungsdateien sicher aufzubewahren und nicht an unbefugte Personen weiterzugeben, da sie Ihre persönlichen Listendaten enthalten.</p>
+
+    <h3>3.3 Teilen von Listen und Rezepten</h3>
+    <p>Sie haben die Möglichkeit, Einkaufslisten und Rezepte über auf Ihrem Gerät installierte Messenger-Dienste wie WhatsApp, Signal oder ähnliche Anwendungen mit anderen Personen zu teilen. Die App stellt hierfür einen teilbaren Inhalt bereit; die eigentliche Übertragung erfolgt ausschließlich über den von Ihnen gewählten Dienst.</p>
+    <p>Wir haben keinen Einfluss auf die Datenverarbeitung durch den jeweiligen Messenger-Dienst. Diese erfolgt ausschließlich gemäß der Datenschutzrichtlinie des jeweiligen Anbieters. Wir erhalten keine Informationen darüber, an wen oder wie oft Inhalte geteilt werden.</p>
+    <p>Rechtsgrundlage der Verarbeitung ist Art. 6 Abs. 1 lit. b DS-GVO.</p>
+
+    <h3>3.4 Werbung (Google AdMob)</h3>
+    <p>Die App verwendet Google AdMob, einen Werbedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Über AdMob werden Werbeanzeigen innerhalb der App eingeblendet. Zur Anzeige personalisierter oder nicht-personalisierter Werbung kann AdMob folgende Daten verarbeiten:</p>
+    <p>• Werbe-ID des Geräts (Android Advertising ID)<br>
+    • IP-Adresse<br>
+    • Geräteinformationen (Modell, Betriebssystemversion)<br>
+    • Nutzungsdaten der App (Interaktionen mit Werbeanzeigen)<br>
+    • Ungefährer Standort (basierend auf IP-Adresse)</p>
+    <p>Google kann diese Informationen auch an Dritte übertragen, sofern dies gesetzlich vorgeschrieben ist oder soweit Dritte diese Daten im Auftrag von Google verarbeiten. Bei der Nutzung von Google-Diensten kann eine Übermittlung personenbezogener Daten an Server von Google in den USA erfolgen.</p>
+    <p>Rechtsgrundlage der Verarbeitung ist Art. 6 Abs. 1 lit. a DS-GVO (Einwilligung). Die Einwilligung zur Anzeige personalisierter Werbung kann über die Systemeinstellungen Ihres Geräts oder über die von Google bereitgestellten Datenschutzoptionen erteilt oder widerrufen werden. Sie können der personalisierten Werbung jederzeit widersprechen, indem Sie in den Einstellungen Ihres Android-Geräts unter <em>Datenschutz → Werbung</em> die Option „Personalisierte Werbung deaktivieren" aktivieren oder die Werbe-ID zurücksetzen. In diesem Fall werden nur noch nicht-personalisierte Anzeigen angezeigt.</p>
+    <p>Die Datenverarbeitung durch Google erfolgt in eigener datenschutzrechtlicher Verantwortung. Weitere Informationen zur Datenverarbeitung durch Google sowie zu Ihren Widerspruchsmöglichkeiten finden Sie unter:<br>
+    <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a><br>
+    <a href="https://support.google.com/ads/answer/2662922" target="_blank">https://support.google.com/ads/answer/2662922</a></p>
+
+    <h3>3.5 In-App-Kauf (Google Play Billing)</h3>
+    <p>Die App bietet kostenpflichtige Zusatzfunktionen in Form einer Pro-Version an. Käufe werden ausschließlich über Google Play Billing abgewickelt, einen Zahlungsdienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.</p>
+    <p>Die gesamte Zahlungsabwicklung – einschließlich der Erfassung, Speicherung und Verarbeitung von Zahlungsdaten wie Kreditkarteninformationen oder Bankverbindungen – erfolgt ausschließlich durch Google. Wir erhalten lediglich eine Bestätigung über den erfolgreichen Abschluss eines Kaufs, jedoch keinerlei Zahlungsdaten.</p>
+    <p>Die Verarbeitung Ihrer Zahlungsdaten durch Google erfolgt gemäß deren Datenschutzrichtlinie. Käufe über Google Play unterliegen zudem den Nutzungsbedingungen von Google Play.</p>
+    <p>Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></p>
+    <p>Rechtsgrundlage der Verarbeitung ist Art. 6 Abs. 1 lit. b DS-GVO (Vertragserfüllung).</p>
+
+    <h2>4. Datenweitergabe an Dritte und externe Empfänger</h2>
+    <p>Eine Weitergabe Ihrer personenbezogenen Daten an Dritte erfolgt grundsätzlich nicht, es sei denn, wir sind gesetzlich dazu verpflichtet oder Sie haben ausdrücklich eingewilligt. In bestimmten Fällen sind wir gesetzlich verpflichtet, Daten an eine anfragende staatliche Stelle zu übermitteln, z.B. im Rahmen nationaler Rechtsvorschriften. Rechtsgrundlage der Verarbeitung ist in diesen Fällen Art. 6 Abs. 1 lit. c DS-GVO.</p>
+    <p>Soweit innerhalb der App Drittanbieter wie Google (AdMob, Play Billing) eingesetzt werden, erfolgt die Datenverarbeitung durch diese Anbieter in eigener datenschutzrechtlicher Verantwortung gemäß deren jeweiligen Datenschutzbestimmungen.</p>
+    <p>Im Falle einer Übermittlung von personenbezogenen Daten in Länder außerhalb der EU bzw. des EWR stellen wir sicher, dass angemessene Schutzmaßnahmen gemäß den Datenschutzbestimmungen ergriffen wurden, z.B. durch Anwendung der von der EU-Kommission genehmigten Standardvertragsklauseln (Art. 46 DS-GVO).</p>
+
+    <h2>5. Verwendung von Impressum-Privatschutz (IP-Management)</h2>
+    <p>Wir verwenden für die Verwaltung der an uns gesendeten Post die Dienstleistungen der IMPRESSUM-PRIVATSCHUTZ GmbH, Ludwig-Erhard-Str. 18, 20459 Hamburg. Dieser Dienstleister bietet eine sichere und zuverlässige Postanschrift für unser Projekt (z.B. Impressum, Datenschutzerklärung und ggf. weitere Bereiche). Dies stellt auch unser berechtigtes Interesse im Sinne des Art. 6 Abs. 1 lit. f DS-GVO dar. Wir haben mit Impressum-Privatschutz einen Vertrag zur Auftragsverarbeitung abgeschlossen und setzen die strengen Vorgaben der deutschen Datenschutzbehörden bei der Nutzung dieser Dienstleistung vollständig um. Weitere Informationen über Datenschutz bei Impressum-Privatschutz GmbH finden Sie hier: <a href="https://impressum-privatschutz.de/datenschutzerklaerung/" target="_blank">https://impressum-privatschutz.de/datenschutzerklaerung/</a></p>
+
+    <h2>6. Speicherdauer der Daten</h2>
+    <p>Da alle App-Daten ausschließlich lokal auf Ihrem Gerät gespeichert werden, liegt die Kontrolle über die Speicherdauer vollständig bei Ihnen. Sie können die App und alle damit verbundenen Daten jederzeit deinstallieren und löschen. Eine Deinstallation führt zur unwiderruflichen Löschung aller lokal gespeicherten Daten.</p>
+    <p>Soweit Daten durch Drittanbieter wie Google (AdMob, Play Billing) verarbeitet werden, gelten die jeweiligen Speicherfristen dieser Anbieter gemäß deren Datenschutzrichtlinien. Soweit gesetzliche Aufbewahrungspflichten bestehen, werden diese eingehalten.</p>
+
+    <h2>7. Datensicherheit</h2>
+    <p>Wir legen großen Wert auf den Schutz Ihrer personenbezogenen Daten und haben technische und organisatorische Maßnahmen (TOMs) implementiert, um ein angemessenes Schutzniveau gemäß den gesetzlichen Anforderungen, insbesondere der DS-GVO, zu gewährleisten.</p>
+    <p>Da alle Nutzerdaten ausschließlich lokal auf Ihrem Gerät gespeichert werden, sind sie durch die Sicherheitsmechanismen Ihres Android-Betriebssystems geschützt. Wir empfehlen, Ihr Gerät mit einem sicheren Sperrbildschirm zu schützen und regelmäßige Sicherheitsupdates durchzuführen.</p>
+    <p>Die technischen und organisatorischen Maßnahmen werden regelmäßig überprüft und soweit erforderlich an den Stand der Technik angepasst, um den Schutz Ihrer Daten kontinuierlich zu gewährleisten.</p>
+
+    <h2>8. Ihre Rechte als betroffene Person</h2>
+    <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über den Zweck, den Umfang, die Herkunft und die Empfänger der von Ihnen gespeicherten personenbezogenen Daten zu verlangen (Art. 15 DS-GVO). Zusätzlich haben Sie das Recht, die Berichtigung unrichtiger oder unvollständiger Daten zu verlangen (Art. 16 DS-GVO).</p>
+    <p>Gemäß den datenschutzrechtlichen Bestimmungen steht Ihnen weiterhin das Recht auf Löschung Ihrer personenbezogenen Daten zu, sofern die Voraussetzungen des Art. 17 DS-GVO vorliegen (Recht auf Vergessenwerden). Da Ihre Daten lokal auf Ihrem Gerät gespeichert sind, können Sie diese jederzeit selbst löschen oder die App deinstallieren.</p>
+    <p>Sie haben das Recht auf Einschränkung der Verarbeitung Ihrer personenbezogenen Daten gemäß Art. 18 DS-GVO sowie das Recht, der Verarbeitung Ihrer personenbezogenen Daten jederzeit zu widersprechen (Art. 21 DS-GVO), wenn diese auf Grundlage von Art. 6 Abs. 1 lit. e oder f DS-GVO erfolgt. Dies gilt insbesondere für die Verarbeitung Ihrer Daten zu Werbezwecken durch Google AdMob.</p>
+    <p>Ferner steht Ihnen das Recht auf Datenübertragbarkeit zu (Art. 20 DS-GVO) sowie das Recht, Ihre erteilte Einwilligung – z.B. zur personalisierten Werbung – jederzeit mit Wirkung für die Zukunft zu widerrufen (Art. 7 Abs. 3 DS-GVO). Die Rechtmäßigkeit der bis zum Zeitpunkt des Widerrufs erfolgten Verarbeitung bleibt hiervon unberührt.</p>
+    <p>Sollten Sie der Auffassung sein, dass die Verarbeitung Ihrer personenbezogenen Daten gegen datenschutzrechtliche Bestimmungen verstößt oder Ihre Rechte auf sonstige Weise verletzt worden sind, haben Sie das Recht, Beschwerde bei der zuständigen Aufsichtsbehörde gemäß Art. 77 DS-GVO einzureichen. Die zuständige Aufsichtsbehörde in Deutschland ist der jeweilige Landesbeauftragte für Datenschutz und Informationsfreiheit.</p>
+    <p>Für die Ausübung Ihrer Rechte wenden Sie sich bitte an: <a href="/cdn-cgi/l/email-protection#6b0004051f0a001f2b0d1e03191104050e450a1b1b"><span class="__cf_email__" data-cfemail="a5cecacbd1c4ced1e5c3d0cdd7dfcacbc08bc4d5d5">[email&#160;protected]</span></a></p>
+    <p style="margin-top:2rem;color:#5a6070;font-size:0.82rem;">Stand: März 2026</p>
+  </div>
+
+  <!-- ENGLISH -->
+  <div class="lang-content" id="content-en">
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">Information on the processing of your data pursuant to Art. 13 and Art. 14 of the General Data Protection Regulation (GDPR) – Smart Shopping List (Android App)</p>
+
+    <div class="toc">
+      <p>Contents</p>
+      <ol>
+        <li>General Information</li>
+        <li>Contact Details of the Controller</li>
+        <li>Data Processing in the App<br>
+          &nbsp;&nbsp;&nbsp;3.1 Local Data Storage<br>
+          &nbsp;&nbsp;&nbsp;3.2 Backup File<br>
+          &nbsp;&nbsp;&nbsp;3.3 Sharing Lists and Recipes<br>
+          &nbsp;&nbsp;&nbsp;3.4 Advertising (Google AdMob)<br>
+          &nbsp;&nbsp;&nbsp;3.5 In-App Purchase (Google Play Billing)</li>
+        <li>Disclosure of Data to Third Parties and External Recipients</li>
+        <li>Use of Impressum-Privatschutz (IP Management)</li>
+        <li>Retention Period</li>
+        <li>Data Security</li>
+        <li>Your Rights as a Data Subject</li>
+      </ol>
+    </div>
+
+    <h2>1. General Information</h2>
+    <p>The following is intended to inform you about how we process personal data in connection with the use of the Android app <strong>Smart Shopping List</strong>. We comply with the applicable European data protection regulations, in particular the General Data Protection Regulation (GDPR).</p>
+    <p>The app does not require registration and can be used entirely offline. No user data is transmitted to our own servers. The protection of your privacy is our highest priority. This privacy policy applies exclusively to the Android app Smart Shopping List and not to websites or other third-party services that may be accessible through the app.</p>
+
+    <h2>2. Contact Details of the Controller</h2>
+    <p>The controller responsible for this privacy policy within the meaning of the GDPR is:</p>
+    <p>Eugen Fuhr<br>
+    c/o IP-Management #8830<br>
+    Ludwig-Erhard-Straße 18<br>
+    20459 Hamburg<br><br>
+    E-Mail: <a href="/cdn-cgi/l/email-protection#aac1c5c4decbc1deeaccdfc2d8d0c5c4cf84cbdada"><span class="__cf_email__" data-cfemail="563d393822373d221630233e242c39383378372626">[email&#160;protected]</span></a></p>
+    <p>If you have any questions regarding data protection or wish to exercise your rights, you can contact us at any time by email.</p>
+
+    <h2>3. Data Processing in the App</h2>
+
+    <h3>3.1 Local Data Storage</h3>
+    <p>All data you enter in the app – including shopping lists, individual items, quantities, prices, recipes, categories, and personal settings such as language, currency and colour theme – is stored exclusively on your device. At no point is this data transmitted to external servers or to the controller.</p>
+    <p>The controller has no access whatsoever to the content you store in the app. All data remains entirely under your control. If the app is uninstalled, all locally stored data will be permanently deleted unless a backup file has been created beforehand.</p>
+    <p>The legal basis for processing is Art. 6(1)(b) GDPR (processing for the performance of a contract / provision of app functions).</p>
+
+    <h3>3.2 Backup File</h3>
+    <p>The app offers the option to export all stored data as a local backup file and save it in a location of your choice on your device. This process takes place exclusively on your device. No data is automatically transferred to third parties.</p>
+    <p>You have full control over where the backup file is stored and whether it is shared with others. We recommend keeping backup files secure and not sharing them with unauthorised persons, as they contain your personal list data.</p>
+
+    <h3>3.3 Sharing Lists and Recipes</h3>
+    <p>You can share shopping lists and recipes with others via messenger services installed on your device, such as WhatsApp, Signal or similar applications. The app provides shareable content for this purpose; the actual transmission takes place exclusively via the service you choose.</p>
+    <p>We have no influence over the data processing carried out by the respective messenger service. This is governed solely by the privacy policy of the respective provider. We receive no information about who content is shared with or how often.</p>
+    <p>The legal basis for processing is Art. 6(1)(b) GDPR.</p>
+
+    <h3>3.4 Advertising (Google AdMob)</h3>
+    <p>The app uses Google AdMob, an advertising service provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. AdMob displays advertisements within the app. To show personalised or non-personalised ads, AdMob may process the following data:</p>
+    <p>• Device advertising ID (Android Advertising ID)<br>
+    • IP address<br>
+    • Device information (model, operating system version)<br>
+    • App usage data (interactions with advertisements)<br>
+    • Approximate location (based on IP address)</p>
+    <p>Google may also transfer this information to third parties where required by law or where third parties process this data on behalf of Google. When using Google services, personal data may be transferred to Google servers in the USA.</p>
+    <p>The legal basis for processing is Art. 6(1)(a) GDPR (consent). Consent to the display of personalised advertising can be granted or withdrawn via your device's system settings or via the privacy options provided by Google. You can opt out of personalised advertising at any time by going to your Android device settings under <em>Privacy → Ads</em> and enabling the option to disable personalised ads, or by resetting your advertising ID. In this case, only non-personalised ads will be displayed.</p>
+    <p>Data processing by Google is carried out under Google's own data protection responsibility. For more information on data processing by Google and your opt-out options, please visit:<br>
+    <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a><br>
+    <a href="https://support.google.com/ads/answer/2662922" target="_blank">https://support.google.com/ads/answer/2662922</a></p>
+
+    <h3>3.5 In-App Purchase (Google Play Billing)</h3>
+    <p>The app offers paid additional features in the form of a Pro version. Purchases are processed exclusively via Google Play Billing, a payment service provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland.</p>
+    <p>All payment processing – including the collection, storage and processing of payment data such as credit card information or bank details – is handled exclusively by Google. We only receive confirmation that a purchase has been successfully completed; we do not receive any payment data.</p>
+    <p>Your payment data is processed by Google in accordance with their privacy policy. Purchases via Google Play are also subject to Google Play's terms of service.</p>
+    <p>For more information: <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></p>
+    <p>The legal basis for processing is Art. 6(1)(b) GDPR (performance of a contract).</p>
+
+    <h2>4. Disclosure of Data to Third Parties and External Recipients</h2>
+    <p>Your personal data is generally not passed on to third parties unless we are legally obliged to do so or you have expressly consented. In certain cases, we are legally required to transmit data to a requesting government authority, e.g. under national legislation. The legal basis for processing in such cases is Art. 6(1)(c) GDPR.</p>
+    <p>Where third-party providers such as Google (AdMob, Play Billing) are used within the app, data processing by these providers is carried out under their own data protection responsibility in accordance with their respective privacy policies.</p>
+    <p>In the event of a transfer of personal data to countries outside the EU or EEA, we ensure that appropriate protective measures have been taken in accordance with data protection regulations, e.g. by applying the standard contractual clauses approved by the EU Commission (Art. 46 GDPR).</p>
+
+    <h2>5. Use of Impressum-Privatschutz (IP Management)</h2>
+    <p>We use the services of IMPRESSUM-PRIVATSCHUTZ GmbH, Ludwig-Erhard-Str. 18, 20459 Hamburg for the management of post sent to us. This service provider offers a secure and reliable postal address for our project (e.g. imprint, privacy policy and other areas as applicable). This also represents our legitimate interest within the meaning of Art. 6(1)(f) GDPR. We have concluded a data processing agreement with Impressum-Privatschutz and fully implement the strict requirements of the German data protection authorities when using this service. Further information on data protection at Impressum-Privatschutz GmbH can be found here: <a href="https://impressum-privatschutz.de/datenschutzerklaerung/" target="_blank">https://impressum-privatschutz.de/datenschutzerklaerung/</a></p>
+
+    <h2>6. Retention Period</h2>
+    <p>Since all app data is stored exclusively on your device, you have full control over the retention period. You can uninstall the app and delete all associated data at any time. Uninstalling the app will permanently delete all locally stored data.</p>
+    <p>Where data is processed by third-party providers such as Google (AdMob, Play Billing), the respective retention periods of these providers apply in accordance with their privacy policies. Statutory retention obligations, where applicable, will be observed.</p>
+
+    <h2>7. Data Security</h2>
+    <p>We attach great importance to the protection of your personal data and have implemented technical and organisational measures (TOMs) to ensure an appropriate level of protection in accordance with legal requirements, in particular the GDPR.</p>
+    <p>Since all user data is stored exclusively on your device, it is protected by the security mechanisms of your Android operating system. We recommend protecting your device with a secure lock screen and carrying out regular security updates.</p>
+    <p>The technical and organisational measures are reviewed regularly and updated to the state of the art as required in order to continuously ensure the protection of your data.</p>
+
+    <h2>8. Your Rights as a Data Subject</h2>
+    <p>You have the right at any time to obtain free information about the purpose, scope, origin and recipients of your stored personal data (Art. 15 GDPR). You also have the right to request the rectification of inaccurate or incomplete data (Art. 16 GDPR).</p>
+    <p>Under data protection law, you also have the right to erasure of your personal data where the conditions of Art. 17 GDPR are met (right to be forgotten). Since your data is stored locally on your device, you can delete it yourself at any time or uninstall the app.</p>
+    <p>You have the right to restriction of processing of your personal data pursuant to Art. 18 GDPR, as well as the right to object at any time to the processing of your personal data (Art. 21 GDPR) where such processing is based on Art. 6(1)(e) or (f) GDPR. This applies in particular to the processing of your data for advertising purposes by Google AdMob.</p>
+    <p>You also have the right to data portability (Art. 20 GDPR) and the right to withdraw your consent – e.g. to personalised advertising – at any time with effect for the future (Art. 7(3) GDPR). The lawfulness of processing carried out on the basis of your consent prior to withdrawal remains unaffected.</p>
+    <p>If you believe that the processing of your personal data violates data protection regulations or that your rights have been infringed in any other way, you have the right to lodge a complaint with the competent supervisory authority pursuant to Art. 77 GDPR. The competent supervisory authority in Germany is the respective State Commissioner for Data Protection and Freedom of Information.</p>
+    <p>To exercise your rights, please contact: <a href="/cdn-cgi/l/email-protection#6d0602kontakt@fuhrzone.app"><span class="__cf_email__" data-cfemail="1b7074756f7a706f5b7d6e73696174757e357a6b6b">[email&#160;protected]</span></a></p>
+    <p style="margin-top:2rem;color:#5a6070;font-size:0.82rem;">Last updated: March 2026</p>
+  </div>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function setLang(lang, btn) {
+  document.querySelectorAll('.lang-content').forEach(function(el){ el.classList.remove('active'); });
+  document.querySelectorAl
