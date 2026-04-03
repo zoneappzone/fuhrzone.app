@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apps — fuhrzone.app</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0d0f;--bg2:#111215;--txt:#e8eaed;--dim:#5a6070;
+  --yellow:#0077B6;--accent:#0077B6;--border:rgba(255,255,255,0.07);
+  --serif:'Playfair Display',serif;--sans:'Outfit',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-weight:300;overflow-x:hidden;}
+body{cursor:none;}
+#cur{position:fixed;width:8px;height:8px;background:var(--yellow);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform 0.15s,width 0.3s,height 0.3s;mix-blend-mode:difference;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:center;gap:4rem;align-items:center;padding:1.8rem 4rem;transition:background 0.4s,backdrop-filter 0.4s;}
+nav.scrolled{background:rgba(12,13,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);border-radius:0 0 20px 20px;}
+nav.hide{transform:translateY(-100%);}
+nav{transition:transform 0.3s ease,background 0.4s,backdrop-filter 0.4s;}
+.logo{font-family:var(--sans);font-weight:600;font-size:1.1rem;letter-spacing:0.1em;position:absolute;left:8rem;color:var(--txt);text-decoration:none;}
+.logo span{color:var(--yellow);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:0.85rem;font-weight:400;letter-spacing:0.08em;color:var(--dim);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--txt);}
+.nav-cta{display:inline-block;width:160px;text-align:center;font-size:0.82rem;font-weight:500;letter-spacing:0.1em;color:var(--yellow)!important;border:1px solid rgba(0,119,182,0.35);padding:0.45rem 0;border-radius:50px;transition:all 0.2s!important;text-decoration:none;}
+.nav-cta:hover{background:var(--yellow)!important;color:var(--bg)!important;}
+.nav-lang{position:absolute;right:4rem;}
+.nav-lang-btn{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:500;letter-spacing:0.06em;color:var(--dim);background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:50px;padding:0.38rem 0.85rem;cursor:pointer;transition:all 0.2s;font-family:var(--sans);}
+.nav-lang-btn:hover{color:var(--txt);border-color:rgba(0,119,182,0.4);}
+.nav-lang-btn .chevron{font-size:0.8rem;opacity:0.5;transition:transform 0.2s;}
+.nav-lang.open .chevron{transform:rotate(180deg);}
+.nav-lang-menu{position:absolute;top:calc(100% + 10px);right:0;background:#111215;border:1px solid var(--border);border-radius:16px;padding:0.5rem;z-index:999;backdrop-filter:blur(20px);box-shadow:0 16px 50px rgba(0,0,0,0.5);width:220px;display:none;grid-template-columns:1fr 1fr;gap:2px;}
+.nav-lang.open .nav-lang-menu{display:grid;animation:fadeDown 0.18s ease;}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+.nlm-btn{display:flex;align-items:center;gap:0.4rem;font-size:0.85rem;color:var(--dim);padding:0.4rem 0.6rem;border-radius:8px;cursor:pointer;border:none;background:none;font-family:var(--sans);transition:all 0.15s;text-align:left;}
+.nlm-btn:hover{background:rgba(0,119,182,0.08);color:var(--txt);}
+.nlm-btn.active{color:var(--yellow);background:rgba(0,119,182,0.1);}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:0.3rem;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:all 0.3s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:rgba(12,13,15,0.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-size:1.5rem;font-weight:300;letter-spacing:0.05em;color:var(--txt);text-decoration:none;transition:color 0.2s;}
+.mobile-menu a:hover{color:var(--yellow);}
+.page-hero{padding:10rem 4rem 5rem;max-width:900px;}
+.page-hero-label{font-size:0.76rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:1rem;display:flex;align-items:center;gap:0.7rem;}
+.page-hero-label::before{content:'';width:18px;height:1px;background:var(--yellow);}
+.page-hero h1{font-family:var(--sans);font-weight:200;font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-0.02em;line-height:1.05;margin-bottom:1.2rem;}
+.page-hero h1 em{font-family:var(--serif);font-style:italic;font-weight:300;color:rgba(255,255,255,0.45);}
+.page-hero-desc{font-size:1.1rem;color:var(--dim);line-height:1.9;max-width:560px;}
+.apps-section{padding:2rem 4rem 6rem;}
+.app-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:1.2rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;margin-bottom:0.75rem;transition:border-color 0.25s,transform 0.25s;}
+.app-card:hover{border-color:rgba(0,119,182,0.35);transform:translateY(-3px);}
+.app-card.coming{opacity:0.6;}
+.app-card.coming:hover{opacity:0.8;transform:translateY(-2px);}
+.ac-left{}
+.ac-top{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
+.ac-icon{font-size:2.8rem;line-height:1;}
+.ac-badge{font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.65rem;border-radius:50px;background:rgba(0,119,182,0.15);color:var(--yellow);border:1px solid rgba(0,119,182,0.3);}
+.ac-badge-soon{background:rgba(255,255,255,0.05);color:var(--dim);border-color:var(--border);}
+.ac-name{font-size:1.8rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.3rem;}
+.ac-cat{font-size:0.8rem;color:var(--dim);margin-bottom:1rem;}
+.ac-desc{font-size:0.9rem;color:var(--dim);line-height:1.85;margin-bottom:1.5rem;}.ac-short-desc{font-size:0.92rem;color:var(--dim);line-height:1.8;margin-bottom:1.2rem;}
+.ac-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.8rem;}
+.ac-tag{font-size:0.62rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:50px;background:rgba(255,255,255,0.04);color:var(--dim);border:1px solid var(--border);}
+.ac-btn{display:inline-flex;align-items:center;gap:0.6rem;font-size:0.85rem;font-weight:500;color:var(--bg);background:var(--yellow);padding:0.65rem 1.4rem;border-radius:50px;text-decoration:none;transition:opacity 0.2s;}
+.ac-btn:hover{opacity:0.85;}
+.ac-soon-txt{font-size:0.82rem;color:var(--dim);font-style:italic;display:flex;align-items:center;gap:0.5rem;}
+.ac-dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);animation:blink 2s ease infinite;flex-shrink:0;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.ac-right{display:flex;flex-direction:column;gap:1rem;}.ac-right-inner{display:none;flex-direction:column;gap:1rem;}.ac-right-inner.open{display:flex;}.ac-toggle{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.82rem;font-weight:500;color:var(--yellow);background:none;border:1px solid rgba(0,119,182,0.35);border-radius:50px;padding:0.45rem 1rem;cursor:pointer;font-family:var(--sans);transition:all 0.2s;margin-bottom:0.5rem;}.ac-toggle:hover{background:rgba(0,119,182,0.1);}
+.ac-feat-list{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;}
+.ac-feat-item{display:flex;gap:0.5rem;font-size:0.78rem;color:var(--dim);line-height:1.5;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:0.6rem 0.8rem;}
+.ac-feat-item strong{color:var(--txt);font-weight:500;}
+.ac-feat-dot{color:var(--yellow);font-size:1.1rem;flex-shrink:0;line-height:1.7;}
+.ac-desc-full{display:none;max-height:400px;overflow-y:auto;font-size:0.95rem;color:rgba(232,234,237,0.6);line-height:1.85;padding:0.5rem 0;font-weight:300;}
+.ac-desc-full.open{display:block;}
+.ac-desc-full p{margin-bottom:0.8rem;}
+.ac-desc-full strong{color:var(--txt);}
+.ac-desc-full::-webkit-scrollbar{width:4px;}
+.ac-desc-full::-webkit-scrollbar-track{background:transparent;}
+.ac-desc-full::-webkit-scrollbar-thumb{background:rgba(0,119,182,0.3);border-radius:4px;}
+.ac-bullets{display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.8rem;}
+.ac-bullet{font-size:0.82rem;color:var(--dim);padding:0.5rem 0.8rem;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;}
+.ac-bullet::first-letter{color:var(--yellow);}
+.ac-highlight-box{border-left:2px solid var(--yellow);padding-left:1.2rem;font-size:0.95rem;color:rgba(232,234,237,0.6);line-height:1.85;margin-bottom:0.8rem;font-weight:300;font-family:var(--sans);}
+.ac-feat-title{font-size:0.82rem;font-weight:500;margin-bottom:0.3rem;}
+.ac-feat-desc{font-size:0.78rem;color:var(--dim);line-height:1.7;}
+footer{margin:1rem 4rem 2rem;border:1px solid var(--border);border-radius:20px;padding:2.5rem 3rem;display:flex;justify-content:center;gap:4rem;align-items:center;flex-wrap:wrap;background:var(--bg2);}
+.footer-logo{font-weight:600;letter-spacing:0.1em;font-size:1rem;}
+.footer-logo span{color:var(--yellow);}
+.footer-links{display:flex;gap:2rem;list-style:none;}
+.footer-links a{font-size:0.85rem;color:var(--dim);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--txt);}
+.footer-copy{font-size:0.8rem;color:var(--dim);}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s,transform 0.8s;}
+.reveal.on{opacity:1;transform:none;}
+.reveal-delay-1{transition-delay:0.15s;}
+@media(max-width:900px){.app-card{grid-template-columns:1fr;}.ac-right{display:none;}}
+@media(max-width:768px){
+  nav{padding:1rem 1.2rem;justify-content:space-between;}
+  .logo{position:static;left:auto;font-size:1rem;margin-right:0;}
+  .nav-links{display:none;}
+  .nav-lang{position:static;}
+  .nav-hamburger{display:flex;}
+  .page-hero{padding:7rem 1.4rem 3rem;}
+  .apps-section{padding:1rem 1.4rem 4rem;}
+  .app-card{padding:1.5rem;}
+  footer{margin:0.75rem 1rem 1.5rem;padding:1.5rem 1.2rem;flex-direction:column;text-align:center;gap:1.2rem;}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:1rem;}
+}
+@media(hover:none) and (pointer:coarse){body{cursor:none;}#cur{position:fixed;width:8px;height:8px;background:var(--yellow);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform 0.15s,width 0.3s,height 0.3s;mix-blend-mode:difference;}}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<nav id="nav">
+  <a href="fuhrzone-homepage.html" class="logo">fuhrzone<span>.app</span></a>
+  <ul class="nav-links">
+    <li><a href="fuhrzone-homepage.html" data-i18n="nav_home">Home</a></li>
+    <li><a href="https://play.google.com/store/apps/details?id=com.fuhrzone.shoppinglist" target="_blank" class="nav-cta" data-i18n="nav_cta">Google Play ↗</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger"><span></span><span></span><span></span></button>
+  <div class="nav-lang" id="navLang">
+    <button class="nav-lang-btn" id="navLangBtn">
+      <span class="flag" id="navFlag">🇩🇪</span>
+      <span id="navLangCode">DE</span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="nav-lang-menu" id="navLangMenu"></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="fuhrzone-homepage.html" data-i18n="nav_home" onclick="closeMobileMenu()">Home</a>
+  <a href="https://play.google.com/store/apps/details?id=com.fuhrzone.shoppinglist" target="_blank" class="nav-cta" onclick="closeMobileMenu()">Google Play ↗</a>
+</div>
+<div class="page-hero">
+  <div class="page-hero-label" data-i18n="page_label">App-Bibliothek</div>
+  <h1><span data-i18n="page_h1">Unsere</span><br><em data-i18n="page_h1_em">Apps.</em></h1>
+  <p class="page-hero-desc" data-i18n="page_desc">Alle Apps von fuhrzone.app — kostenlos, offline nutzbar, ohne Anmeldung. Designed für den echten Alltag.</p>
+</div>
+<div class="apps-section">
+  <!-- SMART SHOPPING LIST -->
+  <div class="app-card reveal">
+    <div class="ac-left">
+      <div class="ac-top">
+        <img src="ic_launcher_512.png" style="width:56px;height:56px;object-fit:contain;border-radius:14px;" alt="Smart Shopping List">
+        <div>
+          <div class="ac-name" data-i18n="ssl_name">Smart Shopping List</div>
+          <div class="ac-cat" data-i18n="ssl_cat">Einkaufen · Rezepte · Eventplaner · Android</div>
+        </div>
+        <span class="ac-badge" data-i18n="badge_available">Verfügbar</span>
+      </div>
+      <div class="ac-short-desc" data-i18n="ssl_highlight">Smart Shopping List ist deine intelligente Einkaufsbegleiterin – übersichtlich, schnell und immer dabei. Offline nutzbar, ohne Anmeldung, 17 Sprachen. Egal ob Wocheneinkauf, Party-Planung oder Kochen – alles an einem Ort.</div>
+      <div class="ac-tags">
+        <span class="ac-tag" data-i18n="tag_offline">Offline</span>
+        <span class="ac-tag" data-i18n="tag_free">Ohne Anmeldung</span>
+        <span class="ac-tag">16 Sprachen</span>
+        <span class="ac-tag">Android</span>
+        <span class="ac-tag" data-i18n="tag_free2">Kostenlos</span>
+      </div>
+      <a href="https://play.google.com/store/apps/details?id=com.fuhrzone.shoppinglist" target="_blank" class="ac-btn" data-i18n="btn_play">▶ Google Play</a>
+    </div>
+    <div class="ac-right">
+      <div class="ac-highlight-box" data-i18n="ssl_highlight">Smart Shopping List ist deine intelligente Einkaufsbegleiterin – übersichtlich, schnell und immer dabei. Offline nutzbar, ohne Anmeldung, 17 Sprachen. Egal ob Wocheneinkauf, Party-Planung oder Kochen – alles an einem Ort.</div>
+      <div class="ac-bullets">
+        <div class="ac-bullet" data-i18n="ssl_b1">· Einkaufsliste</div>
+        <div class="ac-bullet" data-i18n="ssl_b2">· Rezeptbuch</div>
+        <div class="ac-bullet" data-i18n="ssl_b3">· Eventplaner</div>
+        <div class="ac-bullet" data-i18n="ssl_b4">· Pro Version — einmalig 1,49€</div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-logo">fuhrzone<span>.app</span></div>
+  <ul class="footer-links">
+    <li><a href="fuhrzone-homepage.html" data-i18n="nav_home">Home</a></li>
+    <li><a href="fuhrzone-homepage.html#datenschutz" data-i18n="footer_privacy">Datenschutz</a></li>
+    <li><a href="fuhrzone-homepage.html#impressum" data-i18n="footer_imprint">Impressum</a></li>
+  </ul>
+  <div class="footer-copy" data-i18n="footer_copy">© 2026 fuhrzone.app</div>
+</footer>
+<script>
+// Klick außerhalb schließt Details
+document.addEventListener('click', function(e) {
+  const desc = document.getElementById('ssl-desc');
+  const btn = document.querySelector('.ac-toggle');
+  const box = document.querySelector('.ac-highlight-box');
+  if(desc && desc.classList.contains('open')) {
+    if(!desc.contains(e.target) && e.target !== btn && !box.contains(e.target)) {
+      desc.classList.remove('open');
+      btn.textContent = '▼ Mehr Details';
+    }
+  }
+});
+const cur=document.getElementById('cur');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
+document.querySelectorAll('a,.app-card').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('big'));el.addEventListener('mouseleave',()=>cur.classList.remove('big'));});
+let lastScroll=0;
+window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');const c=window.scrollY;if(c>lastScroll&&c>100)nav.classList.add('hide');else nav.classList.remove('hide');lastScroll=c;nav.classList.toggle('scrolled',c>60);});
+const hamburger=document.getElementById('navHamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+function closeMobileMenu(){hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}
+hamburger.addEventListener('click',()=>{const o=mobileMenu.classList.toggle('open');hamburger.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');else e.target.classList.remove('on');});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const LANGS=[
+  {code:'en',flag:'🇬🇧',name:'English'},{code:'de',flag:'🇩🇪',name:'Deutsch'},
+  {code:'es',flag:'🇪🇸',name:'Español'},{code:'fr',flag:'🇫🇷',name:'Français'},
+  {code:'it',flag:'🇮🇹',name:'Italiano'},{code:'pt',flag:'🇧🇷',name:'Português'},
+  {code:'pl',flag:'🇵🇱',name:'Polski'},{code:'tr',flag:'🇹🇷',name:'Türkçe'},
+  {code:'ru',flag:'🇷🇺',name:'Русский'},{code:'ar',flag:'🇸🇦',name:'العربية'},
+  {code:'zh',flag:'🇨🇳',name:'中文'},{code:'ko',flag:'🇰🇷',name:'한국어'},
+  {code:'uk',flag:'🇺🇦',name:'Українська'},{code:'hi',flag:'🇮🇳',name:'हिन्दी'},
+  {code:'ja',flag:'🇯🇵',name:'日本語'},{code:'id',flag:'🇮🇩',name:'Bahasa'},
+];
+const T={
+  en:{ssl_b1:'· Shopping List',ssl_b2:'· Recipe Book',ssl_b3:'· Event Planner',ssl_b4:'· Pro Version — one-time €1.49',ssl_highlight:'Smart Shopping List is your intelligent shopping companion – clear, fast and always with you. Available offline, no sign-up, 17 languages. Whether weekly shopping, party planning or cooking – everything in one place.',nav_home:'Home',nav_cta:'Google Play ↗',page_label:'App Library',page_h1:'Our',page_h1_em:'Apps.',page_desc:'All fuhrzone.app apps — free, offline, no sign-up. Designed for real everyday life.',badge_available:'Available',badge_soon:'Soon',tag_offline:'Offline',tag_free:'No Sign-Up',tag_free2:'Free',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'Shopping · Recipes · Event Planner · Android',ssl_desc:'The smart shopping list with integrated recipe book and event planner. Offline, no sign-up, 16 languages.',ssl_f1t:'🛒 Shopping List',ssl_f1d:'Manage, check off, and categorize items — fast and intuitive.',ssl_f2t:'📖 Recipe Book',ssl_f2d:'Your own recipes with ingredients and steps — add directly to shopping list.',ssl_f3t:'🎉 Event Planner',ssl_f3d:'Plan events, calculate recipes for guests, auto-generate shopping list.',ssl_f4t:'· Pro Version',ssl_f4d:'Unlimited recipes, backup & no banner — one-time €1.49.',cs_name:'Next App',cs_cat:'In Development · Android',cs_desc:'Another practical app for your daily life is in development. Stay tuned!',cs_mystery:'Details coming soon.',coming_soon:'In Development',footer_privacy:'Privacy',footer_imprint:'Imprint',footer_copy:'© 2026 fuhrzone.app'},
+  de:{ssl_b1:'· Einkaufsliste',ssl_b2:'· Rezeptbuch',ssl_b3:'· Eventplaner',ssl_b4:'· Pro Version — einmalig 1,49€',ssl_highlight:'Smart Shopping List ist deine intelligente Einkaufsbegleiterin – übersichtlich, schnell und immer dabei. Offline nutzbar, ohne Anmeldung, 17 Sprachen. Egal ob Wocheneinkauf, Party-Planung oder Kochen – alles an einem Ort.',nav_home:'Home',nav_cta:'Google Play ↗',page_label:'App-Bibliothek',page_h1:'Unsere',page_h1_em:'Apps.',page_desc:'Alle Apps von fuhrzone.app — kostenlos, offline nutzbar, ohne Anmeldung. Designed für den echten Alltag.',badge_available:'Verfügbar',badge_soon:'Bald',tag_offline:'Offline',tag_free:'Ohne Anmeldung',tag_free2:'Kostenlos',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'Einkaufen · Rezepte · Eventplaner · Android',ssl_desc:'Die smarte Einkaufsliste mit integriertem Rezeptbuch und Eventplaner. Offline, ohne Anmeldung, in 16 Sprachen.',ssl_f1t:'· Einkaufsliste',ssl_f1d:'Artikel verwalten, abhaken, kategorisieren — blitzschnell und intuitiv.',ssl_f2t:'· Rezeptbuch',ssl_f2d:'Eigene Rezepte mit Zutaten und Schritten — direkt zur Einkaufsliste hinzufügen.',ssl_f3t:'· Eventplaner',ssl_f3d:'Events planen, Rezepte für Gäste kalkulieren, Einkaufsliste automatisch erstellen.',ssl_f4t:'· Pro Version',ssl_f4d:'Unbegrenzte Rezepte, Backup & kein Banner — einmalig 1,49€.',cs_name:'Nächste App',cs_cat:'In Entwicklung · Android',cs_desc:'Eine weitere praktische App für deinen Alltag ist in Entwicklung. Bleib gespannt!',cs_mystery:'Details folgen in Kürze.',coming_soon:'In Entwicklung',footer_privacy:'Datenschutz',footer_imprint:'Impressum',footer_copy:'© 2026 fuhrzone.app'},
+  es:{ssl_b1:'· Lista de Compras',ssl_b2:'· Recetario',ssl_b3:'· Planificador',ssl_b4:'· Versión Pro — pago único €1,49',ssl_highlight:'Smart Shopping List es tu compañera inteligente de compras – clara, rápida y siempre contigo. Sin conexión, sin registro, 17 idiomas. Ya sea para compras, fiestas o cocinar – todo en un solo lugar.',nav_home:'Inicio',nav_cta:'Google Play ↗',page_label:'Biblioteca de Apps',page_h1:'Nuestras',page_h1_em:'Apps.',page_desc:'Todas las apps de fuhrzone.app — gratis, sin conexión, sin registro. Diseñadas para la vida real.',badge_available:'Disponible',badge_soon:'Pronto',tag_offline:'Sin conexión',tag_free:'Sin Registro',tag_free2:'Gratis',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'Compras · Recetas · Planificador · Android',ssl_desc:'La lista de compras inteligente con libro de recetas y planificador de eventos. Sin conexión, sin registro, 16 idiomas.',ssl_f1t:'🛒 Lista de Compras',ssl_f1d:'Gestiona, marca y categoriza artículos — rápido e intuitivo.',ssl_f2t:'📖 Libro de Recetas',ssl_f2d:'Tus propias recetas con ingredientes y pasos — añade directamente a la lista.',ssl_f3t:'🎉 Planificador',ssl_f3d:'Planifica eventos, calcula recetas para invitados, genera lista automáticamente.',ssl_f4t:'⭐ Versión Pro',ssl_f4d:'Recetas ilimitadas, copia de seguridad & sin banner — pago único €1,49.',cs_name:'Próxima App',cs_cat:'En Desarrollo · Android',cs_desc:'Otra app práctica para tu vida diaria está en desarrollo. ¡Mantente atento!',cs_mystery:'Detalles próximamente.',coming_soon:'En desarrollo',footer_privacy:'Privacidad',footer_imprint:'Aviso legal',footer_copy:'© 2026 fuhrzone.app'},
+  fr:{ssl_b1:'· Liste de Courses',ssl_b2:'· Carnet de Recettes',ssl_b3:'· Planificateur',ssl_b4:'· Version Pro — achat unique €1,49',ssl_highlight:'Smart Shopping List est votre compagnon de courses intelligent – clair, rapide et toujours disponible. Hors ligne, sans inscription, 17 langues. Que ce soit pour les courses, les fêtes ou la cuisine – tout en un seul endroit.',nav_home:'Accueil',nav_cta:'Google Play ↗',page_label:"Bibliothèque d'apps",page_h1:'Nos',page_h1_em:'Apps.',page_desc:"Toutes les apps fuhrzone.app — gratuites, hors ligne, sans inscription. Conçues pour la vraie vie.",badge_available:'Disponible',badge_soon:'Bientôt',tag_offline:'Hors ligne',tag_free:'Sans inscription',tag_free2:'Gratuit',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'Courses · Recettes · Planificateur · Android',ssl_desc:"La liste de courses intelligente avec carnet de recettes et planificateur d'événements. Hors ligne, sans inscription, 16 langues.",ssl_f1t:'🛒 Liste de Courses',ssl_f1d:'Gérez, cochez et catégorisez les articles — rapide et intuitif.',ssl_f2t:'📖 Carnet de Recettes',ssl_f2d:'Vos propres recettes avec ingrédients et étapes — ajoutez directement à la liste.',ssl_f3t:'🎉 Planificateur',ssl_f3d:"Planifiez des événements, calculez les recettes pour vos invités, générez automatiquement la liste.",ssl_f4t:'⭐ Version Pro',ssl_f4d:'Recettes illimitées, sauvegarde & sans bannière — achat unique €1,49.',cs_name:'Prochaine App',cs_cat:'En Développement · Android',cs_desc:'Une autre app pratique pour votre quotidien est en développement. Restez à l\'écoute!',cs_mystery:'Détails à venir.',coming_soon:'En développement',footer_privacy:'Confidentialité',footer_imprint:'Mentions légales',footer_copy:'© 2026 fuhrzone.app'},
+  it:{ssl_b1:'· Lista della Spesa',ssl_b2:'· Ricettario',ssl_b3:'· Pianificatore',ssl_b4:'· Versione Pro — acquisto unico €1,49',ssl_highlight:'Smart Shopping List è la tua compagna intelligente per la spesa – chiara, veloce e sempre con te. Offline, senza registrazione, 17 lingue. Che si tratti della spesa, feste o cucina – tutto in un unico posto.',nav_home:'Home',nav_cta:'Google Play ↗',page_label:'Libreria App',page_h1:'Le nostre',page_h1_em:'App.',page_desc:"Tutte le app di fuhrzone.app — gratuite, offline, senza registrazione. Progettate per la vita reale.",badge_available:'Disponibile',badge_soon:'Presto',tag_offline:'Offline',tag_free:'Senza Registrazione',tag_free2:'Gratuito',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'Spesa · Ricette · Pianificatore · Android',ssl_desc:'La lista della spesa intelligente con ricettario e pianificatore eventi. Offline, senza registrazione, 16 lingue.',ssl_f1t:'🛒 Lista della Spesa',ssl_f1d:'Gestisci, spunta e categorizza articoli — veloce e intuitivo.',ssl_f2t:'📖 Ricettario',ssl_f2d:'Le tue ricette con ingredienti e passaggi — aggiungile direttamente alla lista.',ssl_f3t:'🎉 Pianificatore',ssl_f3d:'Pianifica eventi, calcola ricette per ospiti, genera lista automaticamente.',ssl_f4t:'⭐ Versione Pro',ssl_f4d:'Ricette illimitate, backup & nessun banner — acquisto unico €1,49.',cs_name:'Prossima App',cs_cat:'In Sviluppo · Android',cs_desc:"Un'altra app pratica per la tua vita quotidiana è in sviluppo. Resta sintonizzato!",cs_mystery:'Dettagli in arrivo.',coming_soon:'In sviluppo',footer_privacy:'Privacy',footer_imprint:'Note legali',footer_copy:'© 2026 fuhrzone.app'},
+  pt:{ssl_b1:'· Lista de Compras',ssl_b2:'· Livro de Receitas',ssl_b3:'· Planejador',ssl_b4:'· Versão Pro — compra única €1,49',ssl_highlight:'Smart Shopping List é sua companheira inteligente de compras – clara, rápida e sempre disponível. Offline, sem cadastro, 17 idiomas. Seja para compras, festas ou culinária – tudo em um só lugar.',nav_home:'Início',nav_cta:'Google Play ↗',page_label:'Biblioteca de Apps',page_h1:'Nossos',page_h1_em:'Apps.',page_desc:'Todos os apps do fuhrzone.app — gratuitos, offline, sem cadastro. Projetados para a vida real.',badge_available:'Disponível',badge_soon:'Em breve',tag_offline:'Offline',tag_free:'Sem Cadastro',tag_free2:'Gratuito',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'Compras · Receitas · Planejador · Android',ssl_desc:'A lista de compras inteligente com caderno de receitas e planejador de eventos. Offline, sem cadastro, 16 idiomas.',ssl_f1t:'🛒 Lista de Compras',ssl_f1d:'Gerencie, marque e categorize itens — rápido e intuitivo.',ssl_f2t:'📖 Caderno de Receitas',ssl_f2d:'Suas próprias receitas com ingredientes e passos — adicione diretamente à lista.',ssl_f3t:'🎉 Planejador',ssl_f3d:'Planeje eventos, calcule receitas para convidados, gere lista automaticamente.',ssl_f4t:'⭐ Versão Pro',ssl_f4d:'Receitas ilimitadas, backup & sem banner — compra única €1,49.',cs_name:'Próximo App',cs_cat:'Em Desenvolvimento · Android',cs_desc:'Outro app prático para sua vida diária está em desenvolvimento. Fique ligado!',cs_mystery:'Detalhes em breve.',coming_soon:'Em desenvolvimento',footer_privacy:'Privacidade',footer_imprint:'Aviso legal',footer_copy:'© 2026 fuhrzone.app'},
+  pl:{ssl_b1:'· Lista Zakupów',ssl_b2:'· Książka Przepisów',ssl_b3:'· Planista',ssl_b4:'· Wersja Pro — jednorazowo €1,49',ssl_highlight:'Smart Shopping List to Twój inteligentny towarzysz zakupów – przejrzysty, szybki i zawsze pod ręką. Offline, bez rejestracji, 17 języków. Zakupy, imprezy czy gotowanie – wszystko w jednym miejscu.',nav_home:'Strona główna',nav_cta:'Google Play ↗',page_label:'Biblioteka aplikacji',page_h1:'Nasze',page_h1_em:'Aplikacje.',page_desc:'Wszystkie aplikacje fuhrzone.app — bezpłatne, offline, bez rejestracji. Stworzone dla codziennego życia.',badge_available:'Dostępne',badge_soon:'Wkrótce',tag_offline:'Offline',tag_free:'Bez Rejestracji',tag_free2:'Bezpłatne',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'Zakupy · Przepisy · Planista · Android',ssl_desc:'Inteligenta lista zakupów z książką przepisów i planistą wydarzeń. Offline, bez rejestracji, 16 języków.',ssl_f1t:'🛒 Lista Zakupów',ssl_f1d:'Zarządzaj, zaznaczaj i kategoryzuj artykuły — szybko i intuicyjnie.',ssl_f2t:'📖 Książka Przepisów',ssl_f2d:'Własne przepisy ze składnikami i krokami — dodaj bezpośrednio do listy.',ssl_f3t:'🎉 Planista',ssl_f3d:'Planuj wydarzenia, obliczaj przepisy dla gości, automatycznie generuj listę.',ssl_f4t:'⭐ Wersja Pro',ssl_f4d:'Nieograniczone przepisy, backup & bez banera — jednorazowy zakup €1,49.',cs_name:'Następna Aplikacja',cs_cat:'W Trakcie Tworzenia · Android',cs_desc:'Kolejna praktyczna aplikacja na co dzień jest w trakcie tworzenia. Bądź na bieżąco!',cs_mystery:'Szczegóły wkrótce.',coming_soon:'W trakcie tworzenia',footer_privacy:'Prywatność',footer_imprint:'Nota prawna',footer_copy:'© 2026 fuhrzone.app'},
+  tr:{ssl_b1:'· Alışveriş Listesi',ssl_b2:'· Tarif Kitabı',ssl_b3:'· Etkinlik Planlayıcı',ssl_b4:'· Pro Sürüm — tek seferlik €1,49',ssl_highlight:'Smart Shopping List, akıllı alışveriş arkadaşınızdır – düzenli, hızlı ve her zaman yanınızda. Çevrimdışı, kayıt yok, 17 dil. Alışveriş, parti planlaması veya yemek pişirme – hepsi tek bir yerde.',nav_home:'Ana Sayfa',nav_cta:'Google Play ↗',page_label:'Uygulama Kütüphanesi',page_h1:'Uygulamalarımız',page_h1_em:'',page_desc:"fuhrzone.app'ın tüm uygulamaları — ücretsiz, çevrimdışı, kayıt yok. Gerçek günlük yaşam için tasarlandı.",badge_available:'Mevcut',badge_soon:'Yakında',tag_offline:'Çevrimdışı',tag_free:'Kayıt Yok',tag_free2:'Ücretsiz',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'Alışveriş · Tarifler · Etkinlik Planlayıcı · Android',ssl_desc:'Tarif kitabı ve etkinlik planlayıcı ile akıllı alışveriş listesi. Çevrimdışı, kayıt yok, 16 dil.',ssl_f1t:'🛒 Alışveriş Listesi',ssl_f1d:'Öğeleri yönetin, işaretleyin ve kategorize edin — hızlı ve sezgisel.',ssl_f2t:'📖 Tarif Kitabı',ssl_f2d:'Malzemeler ve adımlarla kendi tarifleriniz — doğrudan listeye ekleyin.',ssl_f3t:'🎉 Etkinlik Planlayıcı',ssl_f3d:"Etkinlikler planlayın, misafirler için tarifleri hesaplayın, alışveriş listesini otomatik oluşturun.",ssl_f4t:'⭐ Pro Sürüm',ssl_f4d:'Sınırsız tarif, yedekleme & banner yok — tek seferlik €1,49.',cs_name:'Sonraki Uygulama',cs_cat:'Geliştiriliyor · Android',cs_desc:'Günlük hayatınız için başka pratik bir uygulama geliştiriliyor. Takipte kalın!',cs_mystery:'Ayrıntılar yakında.',coming_soon:'Geliştiriliyor',footer_privacy:'Gizlilik',footer_imprint:'Yasal bildirim',footer_copy:'© 2026 fuhrzone.app'},
+  ru:{ssl_b1:'· Список Покупок',ssl_b2:'· Книга Рецептов',ssl_b3:'· Планировщик',ssl_b4:'· Pro Версия — единоразово €1,49',ssl_highlight:'Smart Shopping List — ваш умный помощник для покупок – понятный, быстрый и всегда рядом. Офлайн, без регистрации, 17 языков. Покупки, вечеринки или готовка – всё в одном месте.',nav_home:'Главная',nav_cta:'Google Play ↗',page_label:'Библиотека приложений',page_h1:'Наши',page_h1_em:'Приложения.',page_desc:'Все приложения fuhrzone.app — бесплатно, офлайн, без регистрации. Для реальной повседневной жизни.',badge_available:'Доступно',badge_soon:'Скоро',tag_offline:'Офлайн',tag_free:'Без регистрации',tag_free2:'Бесплатно',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'Покупки · Рецепты · Планировщик · Android',ssl_desc:'Умный список покупок с книгой рецептов и планировщиком событий. Офлайн, без регистрации, 16 языков.',ssl_f1t:'🛒 Список Покупок',ssl_f1d:'Управляйте, отмечайте и категоризируйте товары — быстро и интуитивно.',ssl_f2t:'📖 Книга Рецептов',ssl_f2d:'Ваши рецепты с ингредиентами и шагами — добавьте прямо в список.',ssl_f3t:'🎉 Планировщик',ssl_f3d:'Планируйте события, рассчитывайте рецепты для гостей, создавайте список автоматически.',ssl_f4t:'⭐ Pro Версия',ssl_f4d:'Неограниченные рецепты, резервная копия & без баннера — единоразово €1,49.',cs_name:'Следующее приложение',cs_cat:'В разработке · Android',cs_desc:'Ещё одно практичное приложение для повседневной жизни в разработке. Следите за обновлениями!',cs_mystery:'Подробности скоро.',coming_soon:'В разработке',footer_privacy:'Конфиденциальность',footer_imprint:'Правовая информация',footer_copy:'© 2026 fuhrzone.app'},
+  ar:{ssl_b1:'· قائمة التسوق',ssl_b2:'· كتاب الوصفات',ssl_b3:'· مخطط الفعاليات',ssl_b4:'· النسخة المميزة — دفعة واحدة €1.49',ssl_highlight:'Smart Shopping List هي رفيقتك الذكية للتسوق – واضحة، سريعة ودائماً معك. بدون إنترنت، بدون تسجيل، 17 لغة. سواء كان تسوق، تخطيط حفلة أو طبخ – كل شيء في مكان واحد.',nav_home:'الرئيسية',nav_cta:'Google Play ↗',page_label:'مكتبة التطبيقات',page_h1:'تطبيقاتنا',page_h1_em:'',page_desc:'جميع تطبيقات fuhrzone.app — مجانية، بدون إنترنت، بدون تسجيل. مصممة للحياة اليومية الحقيقية.',badge_available:'متاح',badge_soon:'قريباً',tag_offline:'بدون إنترنت',tag_free:'بدون تسجيل',tag_free2:'مجاني',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'تسوق · وصفات · مخطط · Android',ssl_desc:'قائمة التسوق الذكية مع كتاب الوصفات ومخطط الفعاليات. بدون إنترنت، بدون تسجيل، 16 لغة.',ssl_f1t:'🛒 قائمة التسوق',ssl_f1d:'أدر، اشطب وصنف العناصر — بسرعة وبساطة.',ssl_f2t:'📖 كتاب الوصفات',ssl_f2d:'وصفاتك الخاصة مع المكونات والخطوات — أضفها مباشرة للقائمة.',ssl_f3t:'🎉 مخطط الفعاليات',ssl_f3d:'خطط للفعاليات واحسب الوصفات للضيوف وأنشئ القائمة تلقائياً.',ssl_f4t:'⭐ النسخة المميزة',ssl_f4d:'وصفات غير محدودة، نسخ احتياطي & بدون إعلانات — دفعة واحدة €1.49.',cs_name:'التطبيق القادم',cs_cat:'قيد التطوير · Android',cs_desc:'تطبيق عملي آخر لحياتك اليومية قيد التطوير. ترقبوا!',cs_mystery:'التفاصيل قريباً.',coming_soon:'قيد التطوير',footer_privacy:'الخصوصية',footer_imprint:'بيانات قانونية',footer_copy:'© 2026 fuhrzone.app'},
+  zh:{ssl_b1:'· 购物清单',ssl_b2:'· 食谱书',ssl_b3:'· 活动规划器',ssl_b4:'· 专业版 — 一次性 €1.49',ssl_highlight:'Smart Shopping List 是您的智能购物助手 – 清晰、快速、随时可用。离线，无需注册，17种语言。无论购物、派对策划还是烹饪 – 一切尽在一处。',nav_home:'首页',nav_cta:'Google Play ↗',page_label:'应用库',page_h1:'我们的',page_h1_em:'应用。',page_desc:'所有 fuhrzone.app 应用 — 免费、离线可用、无需注册。为真实日常生活而设计。',badge_available:'可用',badge_soon:'即将推出',tag_offline:'离线',tag_free:'无需注册',tag_free2:'免费',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'购物 · 食谱 · 活动规划 · Android',ssl_desc:'智能购物清单，集成食谱书和活动规划器。离线、无需注册、16种语言。',ssl_f1t:'🛒 购物清单',ssl_f1d:'管理、勾选和分类商品 — 快速直观。',ssl_f2t:'📖 食谱书',ssl_f2d:'包含食材和步骤的自定义食谱 — 直接添加到购物清单。',ssl_f3t:'🎉 活动规划器',ssl_f3d:'规划活动、计算客人所需食谱、自动生成购物清单。',ssl_f4t:'⭐ 专业版',ssl_f4d:'无限食谱、备份 & 无横幅广告 — 一次性 €1.49。',cs_name:'下一款应用',cs_cat:'开发中 · Android',cs_desc:'另一款日常实用应用正在开发中。敬请期待！',cs_mystery:'详情即将公布。',coming_soon:'开发中',footer_privacy:'隐私政策',footer_imprint:'法律声明',footer_copy:'© 2026 fuhrzone.app'},
+  ko:{ssl_b1:'· 쇼핑 리스트',ssl_b2:'· 레시피북',ssl_b3:'· 이벤트 플래너',ssl_b4:'· 프로 버전 — 일회성 €1.49',ssl_highlight:'Smart Shopping List는 스마트한 쇼핑 파트너입니다 – 명확하고 빠르며 항상 함께합니다. 오프라인, 회원가입 불필요, 17개 언어. 쇼핑, 파티 계획 또는 요리 – 모든 것이 한 곳에.',nav_home:'홈',nav_cta:'Google Play ↗',page_label:'앱 라이브러리',page_h1:'우리의',page_h1_em:'앱.',page_desc:'모든 fuhrzone.app 앱 — 무료, 오프라인, 회원가입 불필요. 실제 일상을 위해 설계되었습니다.',badge_available:'사용 가능',badge_soon:'곧 출시',tag_offline:'오프라인',tag_free:'회원가입 불필요',tag_free2:'무료',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'쇼핑 · 레시피 · 이벤트 플래너 · Android',ssl_desc:'레시피북과 이벤트 플래너가 통합된 스마트 쇼핑 리스트. 오프라인, 회원가입 불필요, 16개 언어.',ssl_f1t:'🛒 쇼핑 리스트',ssl_f1d:'항목 관리, 체크 및 분류 — 빠르고 직관적.',ssl_f2t:'📖 레시피북',ssl_f2d:'재료와 단계가 있는 나만의 레시피 — 쇼핑 리스트에 바로 추가.',ssl_f3t:'🎉 이벤트 플래너',ssl_f3d:'이벤트 계획, 게스트용 레시피 계산, 쇼핑 리스트 자동 생성.',ssl_f4t:'⭐ 프로 버전',ssl_f4d:'무제한 레시피, 백업 & 배너 없음 — 일회성 €1.49.',cs_name:'다음 앱',cs_cat:'개발 중 · Android',cs_desc:'일상을 위한 또 다른 실용적인 앱이 개발 중입니다. 기대해주세요!',cs_mystery:'세부 정보 곧 공개.',coming_soon:'개발 중',footer_privacy:'개인정보처리방침',footer_imprint:'법적 고지',footer_copy:'© 2026 fuhrzone.app'},
+  uk:{ssl_b1:'· Список Покупок',ssl_b2:'· Книга Рецептів',ssl_b3:'· Планувальник',ssl_b4:'· Pro Версія — одноразово €1,49',ssl_highlight:'Smart Shopping List — ваш розумний помічник для покупок – зрозумілий, швидкий і завжди поруч. Офлайн, без реєстрації, 17 мов. Покупки, вечірки чи готування – все в одному місці.',nav_home:'Головна',nav_cta:'Google Play ↗',page_label:'Бібліотека застосунків',page_h1:'Наші',page_h1_em:'Застосунки.',page_desc:'Усі застосунки fuhrzone.app — безкоштовно, офлайн, без реєстрації. Для реального повсякденного життя.',badge_available:'Доступно',badge_soon:'Незабаром',tag_offline:'Офлайн',tag_free:'Без реєстрації',tag_free2:'Безкоштовно',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'Покупки · Рецепти · Планувальник · Android',ssl_desc:'Розумний список покупок з книгою рецептів і планувальником подій. Офлайн, без реєстрації, 16 мов.',ssl_f1t:'🛒 Список Покупок',ssl_f1d:'Керуйте, відмічайте та категоризуйте товари — швидко і зручно.',ssl_f2t:'📖 Книга Рецептів',ssl_f2d:'Ваші рецепти з інгредієнтами та кроками — додайте прямо до списку.',ssl_f3t:'🎉 Планувальник',ssl_f3d:'Плануйте події, розраховуйте рецепти для гостей, автоматично створюйте список.',ssl_f4t:'⭐ Pro Версія',ssl_f4d:'Необмежені рецепти, резервна копія & без банера — одноразово €1,49.',cs_name:'Наступний застосунок',cs_cat:'У розробці · Android',cs_desc:'Ще один практичний застосунок для повсякденного життя у розробці. Стежте за оновленнями!',cs_mystery:'Подробиці незабаром.',coming_soon:'У розробці',footer_privacy:'Конфіденційність',footer_imprint:'Правова інформація',footer_copy:'© 2026 fuhrzone.app'},
+  hi:{ssl_b1:'· खरीदारी सूची',ssl_b2:'· रेसिपी बुक',ssl_b3:'· इवेंट प्लानर',ssl_b4:'· Pro वर्शन — एकमुश्त €1.49',ssl_highlight:'Smart Shopping List आपकी बुद्धिमान खरीदारी सहयोगी है – स्पष्ट, तेज़ और हमेशा साथ। ऑफलाइन, बिना पंजीकरण, 17 भाषाएं। खरीदारी, पार्टी या खाना पकाना – सब कुछ एक जगह।',nav_home:'होम',nav_cta:'Google Play ↗',page_label:'ऐप लाइब्रेरी',page_h1:'हमारे',page_h1_em:'ऐप्स।',page_desc:'fuhrzone.app के सभी ऐप्स — मुफ़्त, ऑफलाइन, बिना साइनअप। असली रोज़मर्रा की ज़िंदगी के लिए।',badge_available:'उपलब्ध',badge_soon:'जल्द',tag_offline:'ऑफलाइन',tag_free:'बिना साइनअप',tag_free2:'मुफ़्त',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'खरीदारी · रेसिपी · इवेंट प्लानर · Android',ssl_desc:'रेसिपी बुक और इवेंट प्लानर के साथ स्मार्ट खरीदारी सूची। ऑफलाइन, बिना साइनअप, 16 भाषाएं।',ssl_f1t:'🛒 खरीदारी सूची',ssl_f1d:'आइटम प्रबंधित करें, चेक करें और वर्गीकृत करें — तेज़ और सहज।',ssl_f2t:'📖 रेसिपी बुक',ssl_f2d:'सामग्री और चरणों के साथ अपनी रेसिपी — सीधे सूची में जोड़ें।',ssl_f3t:'🎉 इवेंट प्लानर',ssl_f3d:'इवेंट योजना बनाएं, मेहमानों के लिए रेसिपी कैलकुलेट करें, सूची स्वचालित बनाएं।',ssl_f4t:'⭐ Pro वर्शन',ssl_f4d:'असीमित रेसिपी, बैकअप & कोई बैनर नहीं — एकमुश्त €1.49।',cs_name:'अगला ऐप',cs_cat:'विकास में · Android',cs_desc:'आपकी दैनिक जीवन के लिए एक और व्यावहारिक ऐप विकास में है। उत्सुक रहें!',cs_mystery:'विवरण जल्द आएगा।',coming_soon:'विकास में',footer_privacy:'गोपनीयता',footer_imprint:'कानूनी सूचना',footer_copy:'© 2026 fuhrzone.app'},
+  ja:{ssl_b1:'· 買い物リスト',ssl_b2:'· レシピブック',ssl_b3:'· イベントプランナー',ssl_b4:'· Proバージョン — 一回払い €1.49',ssl_highlight:'Smart Shopping List はスマートな買い物パートナーです – 見やすく、速く、いつでも使える。オフライン、登録不要、17言語。買い物、パーティー計画、料理 – すべて一か所で。',nav_home:'ホーム',nav_cta:'Google Play ↗',page_label:'アプリライブラリ',page_h1:'私たちの',page_h1_em:'アプリ。',page_desc:'fuhrzone.appの全アプリ — 無料、オフライン、登録不要。リアルな日常生活のために設計。',badge_available:'利用可能',badge_soon:'近日公開',tag_offline:'オフライン',tag_free:'登録不要',tag_free2:'無料',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'ショッピング · レシピ · イベントプランナー · Android',ssl_desc:'レシピブックとイベントプランナーを搭載したスマート買い物リスト。オフライン、登録不要、16言語。',ssl_f1t:'🛒 買い物リスト',ssl_f1d:'アイテムの管理、チェック、分類 — 速くて直感的。',ssl_f2t:'📖 レシピブック',ssl_f2d:'材料と手順付きの自分のレシピ — 買い物リストに直接追加。',ssl_f3t:'🎉 イベントプランナー',ssl_f3d:'イベントの計画、ゲスト用レシピの計算、買い物リストの自動作成。',ssl_f4t:'⭐ Proバージョン',ssl_f4d:'無制限レシピ、バックアップ & バナーなし — 一回払い€1.49。',cs_name:'次のアプリ',cs_cat:'開発中 · Android',cs_desc:'日常生活のためのもう一つの実用的なアプリが開発中です。お楽しみに！',cs_mystery:'詳細は近日公開。',coming_soon:'開発中',footer_privacy:'プライバシー',footer_imprint:'法的通知',footer_copy:'© 2026 fuhrzone.app'},
+  id:{ssl_b1:'· Daftar Belanja',ssl_b2:'· Buku Resep',ssl_b3:'· Perencana Acara',ssl_b4:'· Versi Pro — sekali bayar €1,49',ssl_highlight:'Smart Shopping List adalah teman belanja cerdas Anda – jelas, cepat, dan selalu siap. Offline, tanpa daftar, 17 bahasa. Belanja, pesta, atau memasak – semua dalam satu tempat.',nav_home:'Beranda',nav_cta:'Google Play ↗',page_label:'Perpustakaan Aplikasi',page_h1:'Aplikasi',page_h1_em:'Kami.',page_desc:'Semua aplikasi fuhrzone.app — gratis, offline, tanpa daftar. Dirancang untuk kehidupan sehari-hari yang nyata.',badge_available:'Tersedia',badge_soon:'Segera',tag_offline:'Offline',tag_free:'Tanpa Daftar',tag_free2:'Gratis',btn_play:'▶ Google Play',ssl_name:'Smart Shopping List',ssl_cat:'Belanja · Resep · Perencana · Android',ssl_desc:'Daftar belanja cerdas dengan buku resep dan perencana acara. Offline, tanpa daftar, 16 bahasa.',ssl_f1t:'🛒 Daftar Belanja',ssl_f1d:'Kelola, centang, dan kategorikan item — cepat dan intuitif.',ssl_f2t:'📖 Buku Resep',ssl_f2d:'Resep sendiri dengan bahan dan langkah — tambah langsung ke daftar.',ssl_f3t:'🎉 Perencana Acara',ssl_f3d:'Rencanakan acara, hitung resep untuk tamu, buat daftar otomatis.',ssl_f4t:'⭐ Versi Pro',ssl_f4d:'Resep tak terbatas, cadangan & tanpa banner — sekali bayar €1,49.',cs_name:'Aplikasi Berikutnya',cs_cat:'Dalam Pengembangan · Android',cs_desc:'Aplikasi praktis lainnya untuk kehidupan sehari-hari Anda sedang dikembangkan. Nantikan!',cs_mystery:'Detail segera hadir.',coming_soon:'Dalam Pengembangan',footer_privacy:'Privasi',footer_imprint:'Informasi Hukum',footer_copy:'© 2026 fuhrzone.app'},
+};
+let curLang='de';
+function getLang(){const b=navigator.language||'de';const c=b.split('-')[0].toLowerCase();return T[c]?c:'de';}
+function applyLang(code){
+  curLang=code;
+  const t=T[code]||T['de'];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.innerHTML=t[k];});
+  document.documentElement.lang=code;
+  document.documentElement.dir=(code==='ar')?'rtl':'ltr';
+  const l=LANGS.find(x=>x.code===code);
+  if(l){document.getElementById('navFlag').textContent=l.flag;document.getElementById('navLangCode').textContent=l.code.toUpperCase();}
+  document.querySelectorAll('.nlm-btn').forEach(b=>{b.classList.toggle('active',b.dataset.lang===code);});
+  localStorage.setItem('fuhrzone_lang',code);
+}
+const navLang=document.getElementById('navLang');
+const navLangBtn=document.getElementById('navLangBtn');
+const navLangMenu=document.getElementById('navLangMenu');
+navLangMenu.innerHTML=LANGS.map(l=>`<button class="nlm-btn" data-lang="${l.code}" onclick="applyLang('${l.code}');navLang.classList.remove('open');"><span class="nflag">${l.flag}</span>${l.name}</button>`).join('');
+navLangBtn.addEventListener('click',e=>{e.stopPropagation();navLang.classList.toggle('open');});
+document.addEventListener('click',()=>navLang.classList.remove('open'));
+const savedLang=localStorage.getItem('fuhrzone_lang');
+applyLang(savedLang||getLang());
+</script>
+</body>
+</html>
