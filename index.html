@@ -1255,7 +1255,7 @@ nav{transition:transform 0.3s ease,background 0.4s,backdrop-filter 0.4s;}
     <li><a href="#apps" data-i18n="nav_apps">Apps</a></li>
     <li><a href="#features" data-i18n="nav_features">Features</a></li>
     <li><a href="#" onclick="document.getElementById('datenschutz-modal').style.display='flex';document.getElementById('ds-title').textContent=(curLang==='de'?'Datenschutzerklärung':'Privacy Policy');document.getElementById('ds-de').style.display=(curLang==='de'?'block':'none');document.getElementById('ds-en').style.display=(curLang==='de'?'none':'block');return false;" data-i18n="footer_privacy">Datenschutz</a></li>
-    <li><a href="#" onclick="document.getElementById('impressum-modal').style.display='flex';return false;" data-i18n="footer_imprint">Impressum</a></li>
+    <li><a href="#" onclick="document.getElementById('impressum-modal').style.display='flex';document.getElementById('imp-de').style.display=(curLang==='de'?'block':'none');document.getElementById('imp-en').style.display=(curLang==='de'?'none':'block');return false;" data-i18n="footer_imprint">Impressum</a></li>
   </ul>
   <div class="footer-copy" data-i18n="footer_copy">© 2026 fuhrzone.app</div>
 </footer>
@@ -2427,15 +2427,26 @@ setLang('en');
   </div>
 </div>
 
+<script>
+function impLangAuto(){
+  var lang = navigator.language || navigator.userLanguage || '';
+  var de = document.getElementById('imp-de');
+  var en = document.getElementById('imp-en');
+  if(lang.startsWith('de')){
+    de.style.display='block'; en.style.display='none';
+  } else {
+    de.style.display='none'; en.style.display='block';
+  }
+}
+</script>
 <div id="impressum-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(12px);align-items:center;justify-content:center;" onclick="if(event.target===this)this.style.display='none'">
   <div style="max-width:600px;width:90%;background:#111215;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2.5rem;position:relative;max-height:90vh;overflow-y:auto;">
     <button onclick="document.getElementById('impressum-modal').style.display='none'" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#5a6070;font-size:1.2rem;cursor:pointer;">✕</button>
     <h2 style="font-family:Outfit,sans-serif;font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;color:#e8eaed;margin-bottom:1.5rem;">Legal Notice / Impressum</h2>
-    <div style="font-size:0.82rem;color:#8a9ab0;line-height:2;">
+    <div id="imp-de" style="display:none;font-size:0.82rem;color:#8a9ab0;line-height:2;">
       <p style="margin:0 0 0.5rem;">Angaben gemäß § 5 DDG</p>
       <p style="color:#e8eaed;font-weight:600;margin:1rem 0 0.3rem;">Angaben zum Unternehmen</p>
-      <p style="margin:0;">Eugen Fuhr</p>
-      <p style="margin:0;">FuhrZone</p>
+      <p style="margin:0;">Eugen Fuhr</p><p style="margin:0;">FuhrZone</p>
       <p style="margin:0;">c/o IP-Management #8830</p>
       <p style="margin:0;">Ludwig-Erhard-Straße 18</p>
       <p style="margin:0 0 1rem;">20459 Hamburg</p>
@@ -2459,6 +2470,35 @@ setLang('en');
       <p style="margin:0 0 1rem;">Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
       <p style="color:#e8eaed;font-weight:600;margin:1rem 0 0.3rem;">Urheberrecht</p>
       <p style="margin:0 0 1rem;">Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+      <p style="margin-top:1.5rem;color:#5a6070;font-size:0.75rem;">© 2026 FuhrZone | Eugen Fuhr</p>
+    </div>
+    <div id="imp-en" style="display:block;font-size:0.82rem;color:#8a9ab0;line-height:2;">
+      <p style="margin:0 0 0.5rem;">Information pursuant to § 5 DDG</p>
+      <p style="color:#e8eaed;font-weight:600;margin:1rem 0 0.3rem;">Company Information</p>
+      <p style="margin:0;">Eugen Fuhr</p><p style="margin:0;">FuhrZone</p>
+      <p style="margin:0;">c/o IP-Management #8830</p>
+      <p style="margin:0;">Ludwig-Erhard-Straße 18</p>
+      <p style="margin:0 0 1rem;">20459 Hamburg, Germany</p>
+      <p style="color:#e8eaed;font-weight:600;margin:1rem 0 0.3rem;">Contact</p>
+      <p style="margin:0;">Email: <a href="mailto:kontakt@fuhrzone.app" style="color:#0077B6;">kontakt@fuhrzone.app</a></p>
+      <p style="margin:0 0 1rem;">Website: <a href="https://fuhrzone.app" style="color:#0077B6;">https://fuhrzone.app</a></p>
+      <p style="color:#e8eaed;font-weight:600;margin:1rem 0 0.3rem;">Legal Form</p>
+      <p style="margin:0 0 1rem;">Sole proprietorship (Einzelunternehmen)</p>
+      <p style="color:#e8eaed;font-weight:600;margin:1rem 0 0.3rem;">VAT</p>
+      <p style="margin:0;">VAT Identification Number pursuant to § 27a UStG: DE461287510</p>
+      <p style="margin:0 0 1rem;">In accordance with § 19 UStG, no VAT is charged (small business exemption).</p>
+      <p style="color:#e8eaed;font-weight:600;margin:1rem 0 0.3rem;">Responsible for content pursuant to § 18 para. 2 MStV</p>
+      <p style="margin:0;">Eugen Fuhr</p>
+      <p style="margin:0 0 1rem;">c/o IP-Management #8830, Ludwig-Erhard-Straße 18, 20459 Hamburg, Germany</p>
+      <p style="color:#e8eaed;font-weight:600;margin:1rem 0 0.3rem;">Consumer Dispute Resolution</p>
+      <p style="margin:0;">We are neither obligated nor willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+      <p style="margin:0 0 1rem;">The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr" target="_blank" style="color:#0077B6;">https://ec.europa.eu/consumers/odr</a></p>
+      <p style="color:#e8eaed;font-weight:600;margin:1rem 0 0.3rem;">Liability for Content</p>
+      <p style="margin:0 0 1rem;">As a service provider, we are responsible for our own content on this website in accordance with § 7 para. 1 DDG and general laws. Under §§ 8 to 10 DDG, however, we are not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information under general laws remain unaffected. Liability is only possible from the moment we become aware of a specific legal violation. Upon becoming aware of such violations, we will remove the relevant content immediately.</p>
+      <p style="color:#e8eaed;font-weight:600;margin:1rem 0 0.3rem;">Liability for Links</p>
+      <p style="margin:0 0 1rem;">Our website contains links to external third-party websites over whose content we have no influence. We therefore cannot accept any liability for such external content. The respective provider or operator of the linked pages is always responsible for their content. Linked pages were checked for possible legal violations at the time of linking. No illegal content was apparent at the time of linking. However, permanent monitoring of linked pages is not reasonable without specific indications of a legal violation. Upon becoming aware of legal violations, we will remove such links immediately.</p>
+      <p style="color:#e8eaed;font-weight:600;margin:1rem 0 0.3rem;">Copyright</p>
+      <p style="margin:0 0 1rem;">The content and works on these pages created by the site operator are subject to German copyright law. Reproduction, editing, distribution and any kind of use beyond the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use. Where content on this site was not created by the operator, the copyrights of third parties are respected. Should you become aware of a copyright infringement, please notify us. Upon becoming aware of legal violations, we will remove such content immediately.</p>
       <p style="margin-top:1.5rem;color:#5a6070;font-size:0.75rem;">© 2026 FuhrZone | Eugen Fuhr</p>
     </div>
   </div>
